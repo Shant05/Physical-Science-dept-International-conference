@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Conference on Applied Statistics and Data Analytics (ICASDA) 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Consistency */
+        :root {
+            --primary-color: #004c99; /* Deep Professional Blue */
+            --secondary-color: #6c757d;
+            --accent-color: #ffc107; /* Gold/Yellow for highlights */
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --poppins-font: 'Poppins', sans-serif;
+            --roboto-font: 'Roboto', sans-serif;
+        }
+        
+        body {
+            font-family: var(--poppins-font);
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: var(--light-color);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--roboto-font);
+            font-weight: 700;
+        }
+        
+        .text-primary { color: var(--primary-color) !important; }
+        .bg-primary { background-color: var(--primary-color) !important; }
+
+        /* Custom Header for Logo Alignment and Responsiveness */
+        .logo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo-header .collaborator-logos {
+            display: flex;
+            gap: 15px;
+        }
+        .logo-header img {
+            max-height: 4em;
+            transition: max-height 0.3s;
+        }
+        /* Mobile adjustment for logos */
+        @media (max-width: 576px) {
+            .logo-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .logo-header img {
+                max-height: 3em;
+            }
+        }
+
+        /* Navigation Bar Styling */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            z-index: 1020;
+        }
+        .nav-link {
+            font-size: 0.85rem !important;
+            padding: 0.5rem 0.8rem !important;
+            white-space: nowrap; /* Prevent wrapping in desktop view */
+        }
+        
+        /* Hero Section Styling (More Responsive Text Scaling) */
+        .hero-section {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            background: linear-gradient(135deg, var(--primary-color), #4361ee);
+        }
+        .hero-section .display-4 {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font sizing */
+        }
+
+        /* Section Separator */
+        .section-header-divider {
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        /* Committee List (New styling for picture cards) */
+        .member-card {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .member-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover; /* Ensures image fills the circle without stretching */
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid var(--accent-color);
+        }
+        .member-card .name {
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        .member-card .title {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        /* Committee Role Display */
+        .committee-role-heading {
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        /* Sponsorship Section Styling */
+        .sponsorship-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.3s;
+        }
+        .sponsorship-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .sponsorship-item img {
+            max-height: 60px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<header class="sticky-top">
+    <div class="bg-white py-3 border-bottom">
+        <div class="container logo-header">
+            <a class="navbar-brand me-0" href="https://www.kristujayanti.edu.in/" target="_blank" aria-label="Kristu Jayanti Home">
+                <img src="./images/kjc-flag-latest.png" alt="Kristu Jayanti Logo" loading="lazy" />
+            </a>
+            <div class="collaborator-logos">
+                <a class="navbar-brand me-0 d-none d-sm-block" href="https://www.bangaloreuniversity.ac.in/" target="_blank" aria-label="Bangalore University Home">
+                    <img src="./images/bu-logo-placeholder.png" alt="Bangalore University Logo" loading="lazy" />
+                </a>
+                 <a class="navbar-brand me-0" href="https://www.mgu.ac.in/" target="_blank" aria-label="Mahatma Gandhi University Home">
+                    <img src="./images/mgu-logo-placeholder.png" alt="Mahatma Gandhi University Logo" loading="lazy" />
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-lg-none fw-bold" href="#top">ICASDA 2026</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center active" aria-current="page" href="#top"><i class="fas fa-home me-0 mb-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#about"><i class="fas fa-university me-0 mb-1"></i>Organizers</a></li>
+                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#callforpapers"><i class="fas fa-file-alt me-0 mb-1"></i>Papers</a></li>
+                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#registration"><i class="fas fa-money-check-alt me-0 mb-1"></i>Fees</a></li>
+                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#sponsors"><i class="fas fa-handshake me-0 mb-1"></i>Sponsors</a></li>
+                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#committees"><i class="fas fa-users me-0 mb-1"></i>Committees</a></li>
+                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#venue"><i class="fas fa-map-marker-alt me-0 mb-1"></i>Venue</a></li>
+                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#contact"><i class="fas fa-envelope me-0 mb-1"></i>Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<section id="top" class="hero-section position-relative overflow-hidden">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7 text-white" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="display-4 fw-bold mb-3">International Conference on Applied Statistics and Data Analytics</h1>
+                <h2 class="h3 mb-4 text-warning">ICASDA 2026</h2>
+                <p class="lead mb-4">
+                    Organized by the **Department of Statistics, Kristu Jayanti (Deemed to be University)**<br>
+                    In Collaboration with **Mahatma Gandhi University** & **Bangalore University**
+                </p>
+                <div class="d-inline-block bg-warning text-dark px-4 py-2 rounded-pill shadow-sm mb-4 fw-bold">
+                    <i class="far fa-calendar-alt me-2"></i>
+                    **February 12<sup>th</sup> - 13<sup>th</sup>, 2026**
+                </div>
+                
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <a href="https://portal.kristujayanti.edu.in/register-international-conference-on-applied-statistics-and-data-analytics" target="_blank" class="btn btn-warning btn-lg px-4 py-2 text-dark fw-bold" aria-label="Register Now for ICASDA 2026">
+                        <i class="fas fa-user-plus me-2"></i>Register Now
+                    </a>
+                    <a href="#callforpapers" class="btn btn-outline-light btn-lg px-4 py-2" aria-label="Call for Papers">
+                        <i class="fas fa-file-alt me-2"></i>Submit Paper
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-5 mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000">
+                <div class="card border-0 shadow-lg overflow-hidden h-100">
+                    <div class="card-header bg-primary text-white p-4">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-calendar-check fs-4 me-3"></i>
+                            <h3 class="h5 mb-0">Important Deadlines</h3>
+                        </div>
+                    </div>
+                    <div class="card-body p-4 bg-white">
+                        <ul class="list-unstyled important-dates-list">
+                            <li>Submission of Abstract <strong class="text-end">December 15, 2025</strong></li>
+                            <li>Submission of Full Paper <strong class="text-end">January 12, 2026</strong></li>
+                            <li>Notification of Acceptance <strong class="text-end">January 22, 2026</strong></li>
+                            <li>Registration & Payment for Publication <strong class="text-end">February 02, 2026</strong></li>
+                            <li>Conference Dates <strong class="text-end">February 12 & 13, 2026</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="position-absolute bottom-0 start-0 w-100" style="z-index: 10;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none" style="width: 100%; height: 70px;">
+            <path fill="#f8f9fa" fill-opacity="1" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,100L0,100Z"></path>
+        </svg>
+    </div>
+</section>
+    
+---
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10 text-center">
+                <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">Organizing Institutions & Departments</h2>
+                <div class="section-header-divider mx-auto" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card border-0 h-100 p-3 bg-white shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-primary section-header-divider"><i class="fas fa-award me-2"></i>Kristu Jayanti (Deemed to be University)</h5>
+                        <p class="text-muted small mb-3">Department of Statistics (Established 1999)</p>
+                        <p class="card-text small">Attained Deemed to be University status in July 2025. Reaccredited with **'A++' (NAAC)** and ranked **34th in NIRF 2025**. The Department of Statistics has successfully hosted three National Conferences and now presents its first International Conference.</p>
+                        <p class="mb-0 small fw-medium">Focus: Theory and application of statistical techniques to UG/PG students across diverse disciplines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card border-0 h-100 p-3 bg-white shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-primary section-header-divider"><i class="fas fa-chart-line me-2"></i>Bangalore University</h5>
+                        <p class="text-muted small mb-3">Department of Statistics (Established 1968)</p>
+                        <p class="card-text small">A pioneer in Statistics education since 1968, offering M.Sc. and Ph.D. programmes. The Department is committed to excellence in teaching, research, and professional development, integrating both theoretical and applied dimensions of Statistics.</p>
+                        <p class="mb-0 small fw-medium">Focus: Quality education, impactful research, and collaborations with statistical organizations and industries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="300">
+                <div class="card border-0 h-100 p-3 bg-white shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-primary section-header-divider"><i class="fas fa-calculator me-2"></i>Mahatma Gandhi University, Kottayam</h5>
+                        <p class="text-muted small mb-3">School of Mathematics and Statistics (Established 2020)</p>
+                        <p class="card-text small">A vibrant academic unit dedicated to the advancement of mathematical sciences and statistical methodologies. The School plays a pivotal role in nurturing analytical thinking and actively engages with emerging trends through seminars, workshops, and conferences.</p>
+                        <p class="mb-0 small fw-medium">Focus: Advancing mathematical sciences, statistical methodologies, and nurturing analytical problem-solving skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+---
+<section id="callforpapers" class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10 text-center">
+                <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">Call for Papers, Themes, and Publication</h2>
+                <div class="section-header-divider mx-auto" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="h5 fw-bold text-primary mb-3"><i class="fas fa-th-list me-2"></i>Conference Themes</h3>
+                <div class="card border-0 p-lg-4 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-primary mb-2">Data & Computational</h6>
+                                <ul class="list-unstyled small">
+                                    <li>Data Analytics, Mining, Science</li>
+                                    <li>Machine Learning, AI Applications</li>
+                                    <li>Computational Statistics</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-primary mb-2">Theoretical Statistics</h6>
+                                <ul class="list-unstyled small">
+                                    <li>Bayesian Inference, Robust Statistics</li>
+                                    <li>Distribution Theory, Stochastic Processes</li>
+                                    <li>Sampling Theory</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-primary mb-2">Bio & Applied Statistics</h6>
+                                <ul class="list-unstyled small">
+                                    <li>Biostatistics, Bioinformatics, Statistical Genetics</li>
+                                    <li>Survival Analysis, Clinical Trials</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-primary mb-2">Economics & Industrial</h6>
+                                <ul class="list-unstyled small">
+                                    <li>Econometrics & Business Analytics</li>
+                                    <li>Financial, Actuarial Statistics, Operations Research</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="h5 fw-bold text-primary mb-3"><i class="fas fa-book-open me-2"></i>Publication Policy</h3>
+                <div class="card border-0 h-100 bg-warning-subtle shadow-sm">
+                    <div class="card-header bg-warning text-dark p-3 text-center">
+                        <h5 class="mb-0 fw-bold">AIP Conference Proceedings</h5>
+                    </div>
+                    <div class="card-body p-4 d-flex flex-column justify-content-center align-items-center">
+                        <p class="text-muted text-center mb-2 small">Selected papers undergo rigorous peer review and will be considered for publication in:</p>
+                        <img src="images/IGI-Moulay.jpeg" class="img-fluid rounded" style="max-height: 80px;" alt="AIP Conference Proceedings logo placeholder" loading="lazy">
+                        <p class="mt-3 small fst-italic">(Proposal Submitted for consideration)</p>
+                        <a href="mailto:statsconference@kristujayanti.com" class="btn btn-primary btn-sm mt-3"><i class="fas fa-paper-plane me-2"></i>Submit Abstract Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="h5 fw-bold text-primary mb-3"><i class="fas fa-file-invoice me-2"></i>Submission Guidelines</h3>
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-secondary mb-3">Formatting</h6>
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item">**Format:** MS Word (A4 Size)</li>
+                                    <li class="list-group-item">**Font:** Times New Roman, Size 12</li>
+                                    <li class="list-group-item">**Spacing:** 1.5 line spacing</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-secondary mb-3">Academic Integrity</h6>
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item text-danger fw-bold"><i class="fas fa-ban me-2"></i><span class="text-dark">Originality is mandatory.</span></li>
+                                    <li class="list-group-item text-danger fw-bold"><i class="fas fa-exclamation-triangle me-2"></i><span class="text-dark">Zero tolerance for plagiarism.</span></li>
+                                    <li class="list-group-item text-primary fw-bold"><i class="fas fa-calendar-times me-2"></i><span class="text-dark">Submission Deadline: January 12, 2026.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+---
+<section id="registration" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10 text-center">
+                <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">Registration and Fee Structure</h2>
+                <div class="section-header-divider mx-auto" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-10">
+                <div class="table-responsive shadow-lg rounded-3 overflow-hidden">
+                    <table class="table table-bordered table-striped table-hover mb-0">
+                        <thead class="table-primary text-white">
+                            <tr>
+                                <th>Category</th>
+                                <th class="text-center">Participation Only</th>
+                                <th class="text-center">Paper Presentation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-medium">Students/Research Scholars</td>
+                                <td class="text-center">₹ 700</td>
+                                <td class="text-center">₹ 1,000</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-medium">Academicians/Industry Participant</td>
+                                <td class="text-center">₹ 1,300</td>
+                                <td class="text-center">₹ 1,800</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-medium">Industry Delegate</td>
+                                <td class="text-center">₹ 1,380</td>
+                                <td class="text-center">₹ 1,800</td>
+                            </tr>
+                            <tr class="table-warning">
+                                <td class="fw-bold">International Delegate</td>
+                                <td class="text-center text-success fw-bold">Free</td>
+                                <td class="text-center fw-bold">USD 50</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-4" data-aos="zoom-in" data-aos-delay="300">
+                    <a href="https://portal.kristujayanti.edu.in/register-international-conference-on-applied-statistics-and-data-analytics" target="_blank" class="btn btn-primary btn-lg"><i class="fas fa-credit-card me-2"></i>Complete Registration & Payment</a>
+                </div>
+                <p class="text-center small mt-3 text-muted">Registration fee covers conference kit, access to all sessions, certificate, and lunch on both days.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+---
+<section id="sponsors" class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10 text-center">
+                <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">Sponsors and Institutional Partners</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="100">
+                    We gratefully acknowledge the support of our esteemed partners who make ICASDA 2026 possible.
+                </p>
+                <div class="section-header-divider mx-auto" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="sponsorship-item bg-white shadow-sm border-primary">
+                    <h6 class="text-uppercase text-primary fw-bold small">Platinum Sponsor</h6>
+                    <img src="images/sponsor-placeholder-1.png" alt="Sponsor Placeholder 1" />
+                    <p class="small text-muted mb-0 mt-2">DataCorp Solutions</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="sponsorship-item bg-white shadow-sm">
+                     <h6 class="text-uppercase text-secondary fw-bold small">Gold Partner</h6>
+                    <img src="images/sponsor-placeholder-2.png" alt="Sponsor Placeholder 2" />
+                    <p class="small text-muted mb-0 mt-2">Analytical Minds Institute</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
+                <div class="sponsorship-item bg-white shadow-sm">
+                    <h6 class="text-uppercase text-secondary fw-bold small">Media Partner</h6>
+                    <img src="images/sponsor-placeholder-3.png" alt="Sponsor Placeholder 3" />
+                    <p class="small text-muted mb-0 mt-2">The Global Science Journal</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+            <h5 class="fw-bold text-secondary mb-3">Interested in Partnership?</h5>
+            <a href="mailto:sponsorship@icasda2026.com" class="btn btn-outline-primary fw-bold"><i class="fas fa-bullhorn me-2"></i>Contact Our Sponsorship Team</a>
+        </div>
+    </div>
+</section>
+
+
+---
+<section id="committees" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10 text-center">
+                <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">Conference Leadership and Committees</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="100">
+                    Guiding the success of ICASDA 2026 are esteemed academic and industry leaders from around the globe.
+                </p>
+                <div class="section-header-divider mx-auto" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center g-4 mb-5">
+            <h4 class="committee-role-heading text-primary" data-aos="fade-up">Key Conference Leadership</h4>
+
+            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card member-card shadow-sm border-0 h-100">
+                    <img src="images/chief-patron-placeholder.jpg" alt="Fr. Dr. Augustine George" class="mx-auto" />
+                    <h6 class="name mb-0">Fr. Dr. Augustine George CMI</h6>
+                    <p class="title">Chief Patron, Vice Chancellor, KJU</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card member-card shadow-sm border-0 h-100">
+                    <img src="images/convener-placeholder.jpg" alt="Dr. Yuvaraj V" class="mx-auto" />
+                    <h6 class="name mb-0">Dr. Yuvaraj V</h6>
+                    <p class="title">Conference Convener, Head, Dept. of Statistics, KJU</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card member-card shadow-sm border-0 h-100">
+                    <img src="images/joint-convener-placeholder.jpg" alt="Dr. A. Mathivanan" class="mx-auto" />
+                    <h6 class="name mb-0">Dr. A. Mathivanan</h6>
+                    <p class="title">Joint Convener, Associate Professor, KJU</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <h4 class="committee-role-heading text-primary" data-aos="fade-up">International & National Advisory Board</h4>
+
+            <div class="col-12">
+                <h6 class="fw-bold text-secondary mt-3" data-aos="fade-up">International Members</h6>
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="member-card bg-light shadow-sm">
+                            <img src="images/int-member-1-placeholder.jpg" alt="Dr. Shanthi Dhandapani" class="mx-auto" />
+                            <p class="name mb-0 small">Dr. Shanthi Dhandapani</p>
+                            <p class="title small">PGDME Director, IMU, Malaysia</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="member-card bg-light shadow-sm">
+                            <img src="images/int-member-2-placeholder.jpg" alt="Prof. Dr. P. K. Singh" class="mx-auto" />
+                            <p class="name mb-0 small">Prof. Dr. P. K. Singh</p>
+                            <p class="title small">University of South Pacific, Fiji</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="700">
+                        <div class="member-card bg-light shadow-sm">
+                            <img src="images/int-member-3-placeholder.jpg" alt="Prof. A. S. C. S. Rao" class="mx-auto" />
+                            <p class="name mb-0 small">Prof. A. S. C. S. Rao</p>
+                            <p class="title small">University of Sydney, Australia</p>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="800">
+                        <div class="member-card bg-light shadow-sm">
+                            <img src="images/int-member-4-placeholder.jpg" alt="Dr. V. K. Singh" class="mx-auto" />
+                            <p class="name mb-0 small">Dr. V. K. Singh</p>
+                            <p class="title small">CEO, Data Insights Group, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <h6 class="fw-bold text-secondary mt-3" data-aos="fade-up">National Members (Sample)</h6>
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="900">
+                        <div class="member-card bg-light shadow-sm">
+                            <img src="images/nat-member-1-placeholder.jpg" alt="Prof. P G Sankaran" class="mx-auto" />
+                            <p class="name mb-0 small">Prof. P G Sankaran</p>
+                            <p class="title small">Pro-VC, CUSAT</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="1000">
+                        <div class="member-card bg-light shadow-sm">
+                            <img src="images/nat-member-2-placeholder.jpg" alt="Dr. Rituparna Sen" class="mx-auto" />
+                            <p class="name mb-0 small">Dr. Rituparna Sen</p>
+                            <p class="title small">Associate Professor, ISI, Bengaluru</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="1100">
+                        <div class="member-card bg-light shadow-sm">
+                            <img src="images/nat-member-3-placeholder.jpg" alt="Dr. C. Vijayalakshmi" class="mx-auto" />
+                            <p class="name mb-0 small">Dr. C. Vijayalakshmi</p>
+                            <p class="title small">Professor & Head, CUTN</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="1200">
+                        <div class="member-card bg-light shadow-sm">
+                            <img src="images/nat-member-4-placeholder.jpg" alt="Prof. Rajendra K. Ray" class="mx-auto" />
+                            <p class="name mb-0 small">Prof. Rajendra K. Ray</p>
+                            <p class="title small">Chairperson, IIT Mandi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <h4 class="committee-role-heading text-primary" data-aos="fade-up">Organizing Committee (Core Team - KJU)</h4>
+            <div class="col-12">
+                <div class="row g-3 justify-content-center">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="1300">
+                        <div class="member-card bg-white shadow-sm">
+                            <img src="images/local-member-1-placeholder.jpg" alt="Prof. Deepa Varghese" class="mx-auto" />
+                            <p class="name mb-0 small">Prof. Deepa Varghese</p>
+                            <p class="title small">Core Member, KJU</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="1400">
+                        <div class="member-card bg-white shadow-sm">
+                            <img src="images/local-member-2-placeholder.jpg" alt="Dr. S. V. Suresh" class="mx-auto" />
+                            <p class="name mb-0 small">Dr. S. V. Suresh</p>
+                            <p class="title small">Core Member, KJU</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="1500">
+                        <div class="member-card bg-white shadow-sm">
+                            <img src="images/local-member-3-placeholder.jpg" alt="Dr. D. Vijaya Kumar" class="mx-auto" />
+                            <p class="name mb-0 small">Dr. D. Vijaya Kumar</p>
+                            <p class="title small">Core Member, KJU</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="1600">
+                        <div class="member-card bg-white shadow-sm">
+                            <img src="images/local-member-4-placeholder.jpg" alt="Prof. Monica Rose" class="mx-auto" />
+                            <p class="name mb-0 small">Prof. Monica Rose</p>
+                            <p class="title small">Core Member, KJU</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="1700">
+                        <div class="member-card bg-white shadow-sm">
+                            <img src="images/local-member-5-placeholder.jpg" alt="Dr. J. Paul Bino" class="mx-auto" />
+                            <p class="name mb-0 small">Dr. J. Paul Bino</p>
+                            <p class="title small">Core Member, KJU</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-3 small fst-italic text-secondary text-center">The full list of all committee members is available upon request and will be featured in the official proceedings.</p>
+    </div>
+</section>
+
+---
+
+<section id="venue" class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10 text-center">
+                <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">Conference Venue and Location</h2>
+                <div class="section-header-divider mx-auto" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                <div class="card border-0 shadow-lg h-100">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold text-primary mb-3"><i class="fas fa-building me-2"></i>Kristu Jayanti (Deemed to be University)</h4>
+                        <address class="small text-muted">
+                            K. Narayanapura, Kothanur P.O.,<br>
+                            Bengaluru-560 077, Karnataka, India.
+                        </address>
+                        <p class="mt-3 small">
+                            The conference will be held in the state-of-the-art **Main Auditorium** and adjacent seminar halls, offering modern facilities for presentations and networking. Bengaluru, known as the 'Silicon Valley of India,' provides excellent connectivity and a vibrant academic environment.
+                        </p>
+                        <h6 class="fw-bold text-secondary mt-4">Key Logistics:</h6>
+                        <ul class="list-unstyled small">
+                            <li><i class="fas fa-plane me-2 text-primary"></i> 45 km from Kempegowda International Airport (BLR)</li>
+                            <li><i class="fas fa-train me-2 text-primary"></i> 14 km from Bangalore City Railway Station</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                <div class="card border-0 shadow-lg h-100 overflow-hidden">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.993074360662!2d77.63665517502755!3d13.03847288726581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae173f4436edfd%3A0x6a0c5c16035f8e65!2sKristu%20Jayanti%20College!5e0!3m2!1sen!2sin!4v1699966023366!5m2!1sen!2sin" 
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0; width:100%; height:100%;"></iframe>
+                    </div>
+                    <div class="card-footer text-center small text-muted">Click the map for directions to Kristu Jayanti (Deemed to be University).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contact" class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center text-md-start mb-4">
+                    <img src="images/clogo 2 white.png" alt="Kristu Jayanti Logo" class="img-fluid mb-3" style="max-height: 70px;" loading="lazy">
+                    <p class="fw-bold mb-1">Kristu Jayanti (Deemed to be University)</p>
+                    <address class="small mb-0 text-white-50">
+                        K. Narayanapura, Kothanur P.O. Bengaluru-560 077, Karnataka, India.
+                    </address>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="mb-4">
+                    <h5 class="mb-4 fw-bold border-bottom pb-2">Conference Queries</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope me-3 text-primary fs-5"></i>
+                        <div>
+                            <p class="mb-0 small">Convener: **Dr. Yuvaraj V**</p>
+                            <a href="mailto:yuvarajv.mca@kristujayanti.com" class="text-white-50 small">yuvarajv.mca@kristujayanti.com</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope-open-text me-3 text-primary fs-5"></i>
+                        <div>
+                            <p class="mb-0 small">Paper Submission:</p>
+                            <a href="mailto:statsconference@kristujayanti.com" class="text-white-50 small">statsconference@kristujayanti.com</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-phone me-3 text-primary fs-5"></i>
+                        <div>
+                            <p class="mb-0 small">Contact Numbers:</p>
+                            <a href="tel:+919740523091" class="text-white-50 small">+91 97405 23091</a>,
+                            <a href="tel:+919446860007" class="text-white-50 small">+91 94468 60007</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <h5 class="mb-4 fw-bold border-bottom pb-2">Quick Links</h5>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="#top" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Home</a></li>
+                    <li class="mb-2"><a href="#callforpapers" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Paper Submission</a></li>
+                    <li class="mb-2"><a href="#registration" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Registration Details</a></li>
+                    <li class="mb-2"><a href="https://www.kristujayanti.edu.in/" target="_blank" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>KJU Official Website</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="row pt-4 mt-4 border-top border-secondary">
+            <div class="col-12 text-center small text-white-50">
+                © 2025 ICASDA 2026. All Rights Reserved. Designed and Maintained by the Department of Statistics, KJU.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true, // Animation only runs once
+        duration: 800, // Animation duration
+    });
+</script>
+</body>
+</html>

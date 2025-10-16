@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call for Papers - ICASDA 2026 - International Conference</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --accent-color: #fd7e14;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+        }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Roboto', sans-serif; font-weight: 700; }
+        .btn { border-radius: 30px; padding: 0.5rem 1.5rem; transition: all 0.3s ease; font-weight: 500; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        .card { border: none; border-radius: 10px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+        .divider { width: 80px; height: 4px; background-color: var(--primary-color); }
+        
+        /* CPF Specific Styles */
+        .dates-table th, .dates-table td {
+            padding: 15px;
+            text-align: left;
+        }
+        .dates-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .dates-table td strong {
+            color: var(--accent-color);
+        }
+        .dates-list {
+            list-style: none;
+            padding: 0;
+        }
+        .date-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        .date-item i {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        .date-item .date-content {
+            flex: 1;
+        }
+        .date-item .date-title {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 2px;
+        }
+        .date-item .date-value {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        .topic-list .list-group-item {
+            border: none;
+            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        .topic-list .fa-check-circle {
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 1.1em;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="sticky-top">
+    <div class="bg-white py-2">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-4 col-6 d-flex justify-content-start">
+                    <a class="navbar-brand me-0" href="index.html">
+                        <img src="./images/kjc-flag-latest.png" class="img-fluid" alt="KJC_logo" style="max-height: 4em;" />
+                    </a>
+                </div>
+                <div class="col-md-4 col-6 d-flex justify-content-end">
+                    <a class="navbar-brand me-0" href="index.html">
+                        <img src="./images/st_marysuniversity.png" class="img-fluid" alt="st_marysuniversity" style="max-height: 5em;" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-lg-none" href="index.html">ICASDA 2026</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav d-flex w-100 justify-content-between" style="font-size: 0.9rem;">
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="index.html">
+                            <i class="fas fa-home me-0 mb-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="about_us.html">
+                            <i class="fas fa-info-circle me-0 mb-1"></i>About Us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="cpf.html">
+                            <i class="fas fa-file-alt me-0 mb-1"></i>CPF
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="committees.html">
+                            <i class="fas fa-users me-0 mb-1"></i>Committees
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="technical_sessions.html">
+                            <i class="fas fa-chalkboard-teacher me-0 mb-1"></i>Technical Sessions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="keynotes.html">
+                            <i class="fas fa-microphone-alt me-0 mb-1"></i>Keynote Speakers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="submission.html">
+                            <i class="fas fa-paper-plane me-0 mb-1"></i>Submission
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="gallery.html">
+                            <i class="fas fa-images me-0 mb-1"></i>Gallery
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="contact_us.html">
+                            <i class="fas fa-envelope me-0 mb-1"></i>Contact us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="registration.html">
+                            <i class="fas fa-user-plus me-0 mb-1"></i>Registration
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="bg-light py-4">
+    <div class="container">
+        <h1 class="h3 fw-bold mb-0">Call for Papers (CPF)</h1>
+        <ol class="breadcrumb mb-0 ps-0 bg-light">
+            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">CPF</li>
+        </ol>
+    </div>
+</div>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            
+            <div class="col-lg-4 order-lg-2" data-aos="fade-left">
+                <div class="card p-3 shadow-lg bg-light sticky-top" style="top: 100px;">
+                    <h3 class="fw-bold text-dark text-center mb-3"><i class="fas fa-calendar-alt me-2 text-primary"></i> Important Dates</h3>
+                    <ul class="dates-list mb-4">
+                        <li class="date-item">
+                            <i class="fas fa-file-upload"></i>
+                            <div class="date-content">
+                                <div class="date-title">Full Paper Submission</div>
+                                <div class="date-value">January 12, 2026</div>
+                            </div>
+                        </li>
+                        <li class="date-item">
+                            <i class="fas fa-bell"></i>
+                            <div class="date-content">
+                                <div class="date-title">Notification of Acceptance</div>
+                                <div class="date-value">January 22, 2026</div>
+                            </div>
+                        </li>
+                        <li class="date-item">
+                            <i class="fas fa-credit-card"></i>
+                            <div class="date-content">
+                                <div class="date-title">Registration & Publication Fee Payment</div>
+                                <div class="date-value">February 02, 2026</div>
+                            </div>
+                        </li>
+                        <li class="date-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <div class="date-content">
+                                <div class="date-title">Conference Dates</div>
+                                <div class="date-value">February 12 & 13, 2026</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="text-center small text-muted mb-0">Note: On-spot registration available for participants</p>
+                    
+                    <div class="text-center">
+                        <a href="[LINK_TO_SUBMISSION_PORTAL]" class="btn btn-danger btn-lg w-100 mb-3" style="background-color: var(--accent-color); border-color: var(--accent-color);">
+                            <i class="fas fa-upload me-2"></i> Submit Your Paper Now!
+                        </a>
+                        <a href="submission.html" class="btn btn-outline-primary w-100">
+                            View Full Submission Guidelines
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 order-lg-1" data-aos="fade-right">
+                <h2 class="fw-bold text-primary mb-3">Invitation to Submit</h2>
+                <div class="divider mb-4"></div>
+                
+                <p>The International Conference on Applied Statistics and Data Analytics (**ICASDA 2026**) invites researchers, practitioners, and students to submit high-quality papers presenting original research in all areas of Applied Statistics and Data Analytics. We seek contributions that address fundamental concepts, emerging technologies, and real-world solutions across various disciplines.</p>
+                <p>All accepted and registered papers will be published in the conference proceedings and submitted for inclusion in major indexing databases (e.g., Scopus, Web of Science).</p>
+
+                <h3 class="fw-bold text-dark mt-4 mb-3"><i class="fas fa-clipboard-list me-2 text-primary"></i> Suggested Topics & Areas</h3>
+                <p>Submissions are welcome on, but not limited to, the following core tracks:</p>
+
+                <div class="row topic-list">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Actuarial Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Agricultural Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Bayesian Inference</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Bioinformatics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Biostatistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Business Analytics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Applications in Clinical Trials</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Computational Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Data Analytics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Data Mining</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Data Science</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Demography</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Design of Experiments</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Distribution Theory</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Econometrics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Educational Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Environmental Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Financial Statistics</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Industrial Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Mathematics / Applied Mathematics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Machine Learning</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Medical Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Multivariate Analysis</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Operations Research</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Predictive Modelling</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Probability Theory</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Psychometrics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Quality Control & Reliability</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Robust Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Sampling Theory</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Social Statistics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Statistical Genetics</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Statistical Modelling</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Statistical Software & Computing</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Stochastic Processes</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Survival Analysis</li>
+                            <li class="list-group-item"><i class="fas fa-check-circle"></i> Time Series Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="fw-bold text-dark mt-5 mb-3"><i class="fas fa-file-check me-2 text-primary"></i> Submission Requirements</h3>
+                <div class="card p-4 shadow-sm">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-dot-circle me-2 text-accent-color"></i> **Paper Length:** Submissions must be between 6 to 8 pages, including figures, tables, and references.</li>
+                        <li class="list-group-item"><i class="fas fa-dot-circle me-2 text-accent-color"></i> **Format:** Use the standard IEEE two-column conference template (available on the <a href="submission.html" class="text-primary text-decoration-none">Submission page</a>).</li>
+                        <li class="list-group-item"><i class="fas fa-dot-circle me-2 text-accent-color"></i> **Originality:** All submitted papers must report original, unpublished research. Simultaneous submissions to other conferences or journals are strictly prohibited.</li>
+                        <li class="list-group-item"><i class="fas fa-dot-circle me-2 text-accent-color"></i> **Review Process:** Papers will undergo a rigorous double-blind peer-review process by the Program Committee.</li>
+                    </ul>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center text-md-start mb-4">
+                    <img src="images/clogo 2 white.png" alt="Logo" class="img-fluid mb-4" style="max-height: 80px;" loading="lazy">
+                    <p class="mb-2">Kristu Jayanti College (Autonomous)</p>
+                    <p class="mb-2">K. Narayanapura, Kothanur (PO)</p>
+                    <p>Bengaluru 560077</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="mb-4">
+                    <h5 class="mb-4 fw-bold">Contact Us</h5>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-phone-alt me-3 mt-1"></i>
+                        <div>
+                            <p class="mb-0">+91 9731778310</p>
+                            <p class="mb-0">+91 8971002351</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <i class="fas fa-envelope me-3 mt-1"></i>
+                        <p class="mb-0">ncci@kristujayanti.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-4">
+                    <h5 class="mb-4 fw-bold">Connect With Us</h5>
+                    <div class="d-flex justify-content-start gap-3 social-icons">
+                        <a href="https://www.facebook.com/KristuJayantiCollege/" target="_blank" class="text-white social-icon">
+                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-facebook-f"></i></div>
+                        </a>
+                        <a href="https://twitter.com/KJCAutonomous/" target="_blank" class="text-white social-icon">
+                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-twitter"></i></div>
+                        </a>
+                        <a href="https://www.linkedin.com/company/icci25" target="_blank" class="text-white social-icon">
+                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-linkedin-in"></i></div>
+                        </a>
+                        <a href="https://www.instagram.com/icci25.kjc/" target="_blank" class="text-white social-icon">
+                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-instagram"></i></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav justify-content-center flex-wrap mb-3">
+                    <li class="nav-item"><a href="index.html" class="nav-link text-white px-3">Home</a></li>
+                    <li class="nav-item"><a href="about_us.html" class="nav-link text-white px-3">About Us</a></li>
+                    <li class="nav-item"><a href="registration.html" class="nav-link text-white px-3">Registration</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link text-white px-3">Gallery</a></li>
+                    <li class="nav-item"><a href="committees.html" class="nav-link text-white px-3">Committees</a></li>
+                </ul>
+                <p class="text-center mb-0">© 2025 ICASDA. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+</body>
+</html>
