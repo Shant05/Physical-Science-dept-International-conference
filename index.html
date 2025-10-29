@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,10 @@
             overflow-x: hidden;
             background-color: var(--light-color);
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
         
         h1, h2, h3, h4, h5, h6 {
             font-family: var(--roboto-font);
@@ -39,54 +44,94 @@
         .text-primary { color: var(--primary-color) !important; }
         .bg-primary { background-color: var(--primary-color) !important; }
 
-        /* Custom Header for Logo Alignment and Responsiveness */
+        /* --- Header & Navigation Styling --- */
         .logo-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.1rem 0;
         }
         .logo-header .collaborator-logos {
             display: flex;
-            gap: 15px;
+            gap: 330px;
         }
         .logo-header img {
             max-height: 4em;
             transition: max-height 0.3s;
         }
+
         /* Mobile adjustment for logos */
         @media (max-width: 576px) {
             .logo-header {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
             }
             .logo-header img {
                 max-height: 3em;
             }
         }
-
-        /* Navigation Bar Styling */
+        
+        /* Desktop Navigation (Visible > lg) */
         .navbar {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
             z-index: 1020;
         }
-        .nav-link {
+        .desktop-nav .nav-link {
             font-size: 0.85rem !important;
             padding: 0.5rem 0.8rem !important;
-            white-space: nowrap; /* Prevent wrapping in desktop view */
+            white-space: nowrap; 
+            transition: background-color 0.3s;
+        }
+        .desktop-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .desktop-nav .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
         }
         
-        /* Hero Section Styling (More Responsive Text Scaling) */
+        /* Mobile Offcanvas Menu (Visible < lg) */
+        .offcanvas-header {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .offcanvas-body .nav-link {
+            padding: 0.75rem 1rem;
+            color: var(--dark-color);
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        .offcanvas-body .nav-link:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        .offcanvas-body .nav-link i {
+            width: 20px; /* Aligns icons vertically */
+        }
+        /* Style for the active link in offcanvas */
+        .offcanvas-body .nav-link.active {
+            font-weight: 600;
+            color: white;
+            background-color: var(--primary-color);
+            border-bottom: 1px solid var(--accent-color);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        /* --- General Section Styling --- */
         .hero-section {
-            padding-top: 6rem;
+            padding-top: 0.1rem;
             padding-bottom: 6rem;
             background: linear-gradient(135deg, var(--primary-color), #4361ee);
         }
         .hero-section .display-4 {
-            font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font sizing */
+            font-size: clamp(2rem, 5vw, 3.5rem); 
         }
-
-        /* Section Separator */
         .section-header-divider {
             border-bottom: 3px solid var(--accent-color);
             padding-bottom: 0.5rem;
@@ -94,7 +139,7 @@
             display: inline-block;
         }
         
-        /* Committee List (New styling for picture cards) */
+        /* --- Committee List (Picture Card Integrity) --- */
         .member-card {
             text-align: center;
             padding: 15px;
@@ -108,7 +153,7 @@
         .member-card img {
             width: 100px;
             height: 100px;
-            object-fit: cover; /* Ensures image fills the circle without stretching */
+            object-fit: cover; 
             border-radius: 50%;
             margin-bottom: 10px;
             border: 3px solid var(--accent-color);
@@ -125,35 +170,99 @@
             line-height: 1.2;
         }
 
-        /* Committee Role Display */
         .committee-role-heading {
             border-left: 5px solid var(--primary-color);
             padding-left: 10px;
             font-weight: 600;
             margin-top: 20px;
         }
-        
-        /* Sponsorship Section Styling */
-        .sponsorship-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 150px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            padding: 10px;
-            transition: all 0.3s;
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .sponsorship-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        #back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
         }
-        .sponsorship-item img {
-            max-height: 60px;
-            max-width: 100%;
+
+        /* Enhanced Responsiveness */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding-top: 2rem;
+                padding-bottom: 4rem;
+            }
+            .hero-section .display-4 {
+                font-size: 2rem;
+            }
+            .section-header-divider {
+                margin-bottom: 1rem;
+            }
+            .member-card img {
+                width: 80px;
+                height: 80px;
+            }
+            .table-responsive {
+                font-size: 0.9rem;
+            }
+            .sponsorship-item {
+                padding: 1rem;
+            }
+            .social-icons {
+                justify-content: center;
+            }
         }
+
+        @media (max-width: 576px) {
+            .logo-header .collaborator-logos {
+                gap: 10px;
+            }
+            .logo-header img {
+                max-height: 2.5em;
+            }
+            .hero-section .display-4 {
+                font-size: 1.8rem;
+            }
+            .btn-lg {
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+            }
+            .card-body p {
+                font-size: 0.9rem;
+            }
+            .important-dates-list li {
+                font-size: 0.85rem;
+            }
+            .table th, .table td {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+            .member-card {
+                padding: 10px;
+            }
+            .member-card img {
+                width: 70px;
+                height: 70px;
+            }
+            .sponsor-logo-container img {
+                max-height: 70px;
+            }
+        }
+
     </style>
 </head>
 
@@ -164,14 +273,14 @@
     <div class="bg-white py-3 border-bottom">
         <div class="container logo-header">
             <a class="navbar-brand me-0" href="https://www.kristujayanti.edu.in/" target="_blank" aria-label="Kristu Jayanti Home">
-                <img src="./images/kjc-flag-latest.png" alt="Kristu Jayanti Logo" loading="lazy" />
+                <img src="Picture/Logo/KJU logo.png" alt="Kristu Jayanti Logo" loading="lazy" />
             </a>
             <div class="collaborator-logos">
-                <a class="navbar-brand me-0 d-none d-sm-block" href="https://www.bangaloreuniversity.ac.in/" target="_blank" aria-label="Bangalore University Home">
-                    <img src="./images/bu-logo-placeholder.png" alt="Bangalore University Logo" loading="lazy" />
+                <a class="navbar-brand me-0" href="https://bangaloreuniversity.karnataka.gov.in/" target="_blank" aria-label="Bangalore University Home">
+                    <img src="Picture/Logo/BNG logo.png" alt="Bangalore University Logo" loading="lazy" />
                 </a>
                  <a class="navbar-brand me-0" href="https://www.mgu.ac.in/" target="_blank" aria-label="Mahatma Gandhi University Home">
-                    <img src="./images/mgu-logo-placeholder.png" alt="Mahatma Gandhi University Logo" loading="lazy" />
+                    <img src="Picture/Logo/Mahatma_Gandhi_University,_Kerala_Logo.svg.png" alt="Mahatma Gandhi University Logo" loading="lazy" />
                 </a>
             </div>
         </div>
@@ -179,25 +288,50 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand d-lg-none fw-bold" href="#top">ICASDA 2026</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand d-lg-none fw-bold" href="index.html">ICASDA 2026</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            
+            <div class="collapse navbar-collapse justify-content-center desktop-nav" id="navbarNav">
                 <ul class="navbar-nav w-100 justify-content-between">
-                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center active" aria-current="page" href="#top"><i class="fas fa-home me-0 mb-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#about"><i class="fas fa-university me-0 mb-1"></i>Organizers</a></li>
-                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#callforpapers"><i class="fas fa-file-alt me-0 mb-1"></i>Papers</a></li>
-                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#registration"><i class="fas fa-money-check-alt me-0 mb-1"></i>Fees</a></li>
-                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#sponsors"><i class="fas fa-handshake me-0 mb-1"></i>Sponsors</a></li>
-                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#committees"><i class="fas fa-users me-0 mb-1"></i>Committees</a></li>
-                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#venue"><i class="fas fa-map-marker-alt me-0 mb-1"></i>Venue</a></li>
-                    <li class="nav-item"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#contact"><i class="fas fa-envelope me-0 mb-1"></i>Contact</a></li>
+                    <li class="nav-item nav-home"><a class="nav-link px-2 d-flex flex-column align-items-center" href="#top"><i class="fas fa-home me-0 mb-1"></i>Home</a></li>
+                    <li class="nav-item nav-about"><a class="nav-link px-2 d-flex flex-column align-items-center" href="about_us.html"><i class="fas fa-university me-0 mb-1"></i>About Us</a></li>
+                    <li class="nav-item nav-cfp"><a class="nav-link px-2 d-flex flex-column align-items-center" href="cpf.html"><i class="fas fa-file-alt me-0 mb-1"></i>CFP</a></li>
+                    <li class="nav-item nav-submission"><a class="nav-link px-2 d-flex flex-column align-items-center" href="submission.html"><i class="fas fa-file-alt me-0 mb-1"></i>Submission</a></li>
+                    <li class="nav-item nav-registration"><a class="nav-link px-2 d-flex flex-column align-items-center" href="registration.html"><i class="fas fa-money-check-alt me-0 mb-1"></i>Registration</a></li>
+                    <li class="nav-item nav-keynotes"><a class="nav-link px-2 d-flex flex-column align-items-center" href="keynotes.html"><i class="fas fa-microphone me-0 mb-1"></i>Keynotes</a></li>
+                    <li class="nav-item nav-committees"><a class="nav-link px-2 d-flex flex-column align-items-center" href="committees.html"><i class="fas fa-users me-0 mb-1"></i>Committees</a></li>
+                    <li class="nav-item nav-sessions"><a class="nav-link px-2 d-flex flex-column align-items-center" href="technical_sessions.html"><i class="fas fa-calendar-alt me-0 mb-1"></i>Sessions</a></li>
+                    <li class="nav-item nav-gallery"><a class="nav-link px-2 d-flex flex-column align-items-center" href="gallery.html"><i class="fas fa-images me-0 mb-1"></i>Gallery</a></li>
+                    <li class="nav-item nav-contact"><a class="nav-link px-2 d-flex flex-column align-items-center" href="contact_us.html"><i class="fas fa-envelope me-0 mb-1"></i>Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    
+    <div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">ICASDA 2026 Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <ul class="navbar-nav justify-content-end flex-grow-1">
+          <li class="nav-item nav-home"><a class="nav-link" href="index.html"><i class="fas fa-home me-3"></i>Home</a></li>
+          <li class="nav-item nav-about"><a class="nav-link" href="about_us.html"><i class="fas fa-university me-3"></i>About Us</a></li>
+          <li class="nav-item nav-cfp"><a class="nav-link" href="cpf.html"><i class="fas fa-file-alt me-3"></i>CFP</a></li>
+          <li class="nav-item nav-submission"><a class="nav-link" href="submission.html"><i class="fas fa-file-alt me-3"></i>Submission</a></li>
+          <li class="nav-item nav-registration"><a class="nav-link" href="registration.html"><i class="fas fa-money-check-alt me-3"></i>Registration</a></li>
+          <li class="nav-item nav-keynotes"><a class="nav-link" href="keynotes.html"><i class="fas fa-microphone me-3"></i>Keynotes</a></li>
+          <li class="nav-item nav-committees"><a class="nav-link" href="committees.html"><i class="fas fa-users me-3"></i>Committees</a></li>
+          <li class="nav-item nav-sessions"><a class="nav-link" href="technical_sessions.html"><i class="fas fa-calendar-alt me-3"></i>Technical Sessions</a></li>
+          <li class="nav-item nav-gallery"><a class="nav-link" href="gallery.html"><i class="fas fa-images me-3"></i>Gallery</a></li>
+          <li class="nav-item nav-contact"><a class="nav-link" href="contact_us.html"><i class="fas fa-envelope me-3"></i>Contact Us</a></li>
+          </ul>
+      </div>
+    </div>
 </header>
 
 
@@ -208,19 +342,19 @@
                 <h1 class="display-4 fw-bold mb-3">International Conference on Applied Statistics and Data Analytics</h1>
                 <h2 class="h3 mb-4 text-warning">ICASDA 2026</h2>
                 <p class="lead mb-4">
-                    Organized by the **Department of Statistics, Kristu Jayanti (Deemed to be University)**<br>
-                    In Collaboration with **Mahatma Gandhi University** & **Bangalore University**
+                    Organized by the Department of Statistics, Kristu Jayanti(Deemed to be University) <br>
+                    In Collaboration with Bangalore University & Mahatma Gandhi University
                 </p>
                 <div class="d-inline-block bg-warning text-dark px-4 py-2 rounded-pill shadow-sm mb-4 fw-bold">
                     <i class="far fa-calendar-alt me-2"></i>
-                    **February 12<sup>th</sup> - 13<sup>th</sup>, 2026**
+                    February 12<sup>th</sup> - 13<sup>th</sup>, 2026
                 </div>
                 
                 <div class="d-flex flex-wrap gap-3 mb-4">
-                    <a href="https://portal.kristujayanti.edu.in/register-international-conference-on-applied-statistics-and-data-analytics" target="_blank" class="btn btn-warning btn-lg px-4 py-2 text-dark fw-bold" aria-label="Register Now for ICASDA 2026">
+                    <a href="registration.html" target="_blank" class="btn btn-warning btn-lg px-4 py-2 text-dark fw-bold" aria-label="Register Now for ICASDA 2026">
                         <i class="fas fa-user-plus me-2"></i>Register Now
                     </a>
-                    <a href="#callforpapers" class="btn btn-outline-light btn-lg px-4 py-2" aria-label="Call for Papers">
+                    <a href="submission.html" class="btn btn-outline-light btn-lg px-4 py-2" aria-label="Call for Papers">
                         <i class="fas fa-file-alt me-2"></i>Submit Paper
                     </a>
                 </div>
@@ -255,54 +389,111 @@
     </div>
 </section>
     
----
-<section id="about" class="py-5">
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-10 text-center">
-                <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">Organizing Institutions & Departments</h2>
-                <div class="section-header-divider mx-auto" data-aos="fade-up" data-aos-delay="100"></div>
-            </div>
-        </div>
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="card border-0 h-100 p-3 bg-white shadow-sm">
-                    <div class="card-body">
-                        <h5 class="fw-bold text-primary section-header-divider"><i class="fas fa-award me-2"></i>Kristu Jayanti (Deemed to be University)</h5>
-                        <p class="text-muted small mb-3">Department of Statistics (Established 1999)</p>
-                        <p class="card-text small">Attained Deemed to be University status in July 2025. Reaccredited with **'A++' (NAAC)** and ranked **34th in NIRF 2025**. The Department of Statistics has successfully hosted three National Conferences and now presents its first International Conference.</p>
-                        <p class="mb-0 small fw-medium">Focus: Theory and application of statistical techniques to UG/PG students across diverse disciplines.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card border-0 h-100 p-3 bg-white shadow-sm">
-                    <div class="card-body">
-                        <h5 class="fw-bold text-primary section-header-divider"><i class="fas fa-chart-line me-2"></i>Bangalore University</h5>
-                        <p class="text-muted small mb-3">Department of Statistics (Established 1968)</p>
-                        <p class="card-text small">A pioneer in Statistics education since 1968, offering M.Sc. and Ph.D. programmes. The Department is committed to excellence in teaching, research, and professional development, integrating both theoretical and applied dimensions of Statistics.</p>
-                        <p class="mb-0 small fw-medium">Focus: Quality education, impactful research, and collaborations with statistical organizations and industries.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="300">
-                <div class="card border-0 h-100 p-3 bg-white shadow-sm">
-                    <div class="card-body">
-                        <h5 class="fw-bold text-primary section-header-divider"><i class="fas fa-calculator me-2"></i>Mahatma Gandhi University, Kottayam</h5>
-                        <p class="text-muted small mb-3">School of Mathematics and Statistics (Established 2020)</p>
-                        <p class="card-text small">A vibrant academic unit dedicated to the advancement of mathematical sciences and statistical methodologies. The School plays a pivotal role in nurturing analytical thinking and actively engages with emerging trends through seminars, workshops, and conferences.</p>
-                        <p class="mb-0 small fw-medium">Focus: Advancing mathematical sciences, statistical methodologies, and nurturing analytical problem-solving skills.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section id="about" class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10 text-center">
+        <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">
+          Organizing Institutions & Departments
+        </h2>
+        <div class="mx-auto mb-4" style="width: 80px; height: 3px; background-color: #0d6efd;"></div>
+      </div>
     </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Kristu Jayanti University -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="card border-0 shadow-sm h-100 rounded-4 d-flex flex-column">
+          <div class="card-body d-flex flex-column">
+            <h5 class="fw-bold text-primary mb-2">
+              <i class="fas fa-award me-2"></i>Kristu Jayanti(Deemed to be University)
+            </h5>
+            <div class="mb-2" style="width: 60px; height: 3px; background-color: #ffc107;"></div>
+            <p class="text-muted small mb-3">Department of Statistics </p>
+            <p class="card-text small flex-grow-1">
+              Established in 1999, Kristu Jayanti (Deemed to be University), managed by the Carmelites of Mary Immaculate (CMI) Fathers, St. Joseph Province, Kottayam, Kerala, has emerged as a centre of excellence in higher education. Accredited with an
+              <strong>‘A++’ grade by NAAC (Third Cycle, 2021)</strong> and ranked <strong>34th in NIRF 2025</strong>, 
+              the university offers diverse programmes across Science, Arts, Commerce, Management, and Law. The Department of Statistics provides a strong academic foundation integrating statistical theory, mathematics, and computational applications through programmes such as B.Sc. Statistics with Mathematics (STMM), Statistics with Economics (STEC), and Statistics with Computer Science (STCS).
+            </p>
+            <p class="small fw-medium mb-3">
+              <strong>Focus:</strong> Comprehensive training in Descriptive Statistics, Probability, Data Analysis using R, Statistical Inference, Regression, and Experimental Design.
+
+             learning integrating Mathematics, Computer Science, and Economics.
+
+            Hands-on exposure through workshops, guest lectures, industrial visits, research projects, and social outreach initiatives like SOP and CLP.
+
+            Emphasis on experiential and self-paced learning through MOOCs and NPTEL courses.
+
+            Preparation for diverse careers in Data Science, Analytics, Finance, Research, Healthcare, Technology, and Academia.
+            </p>
+            <div class="mt-auto">
+              <a href="https://kristujayanti.edu.in/" target="_blank" class="btn btn-outline-primary btn-sm fw-bold">
+                Read More <i class="fas fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bangalore University -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="card border-0 shadow-sm h-100 rounded-4 d-flex flex-column">
+          <div class="card-body d-flex flex-column">
+            <h5 class="fw-bold text-primary mb-2">
+              <i class="fas fa-chart-line me-2"></i>Bangalore University
+            </h5>
+            <div class="mb-2" style="width: 60px; height: 3px; background-color: #ffc107;"></div>
+            <p class="text-muted small mb-3">Department of Statistics</p>
+            <p class="card-text small flex-grow-1">
+              The Department of Statistics, established in 1968 at Bangalore University, Bengaluru, commenced with the B.Sc. (Hons.) programme and expanded in 1969 with the introduction of the M.Sc. programme. Since its inception, the Department has been committed to
+              excellence in teaching, research, and professional development, offering M.Sc. and Ph.D. programmes that integrate both theoretical and applied dimensions of Statistics. With a focus on quality education, impactful research, and scholarly publications, the Department actively
+              collaborates with statistical organizations, research and development establishments, industries, and other academic institutions, thereby advancing statistical knowledge and its applications across diverse fields.
+            </p>
+            <p class="small fw-medium mb-3">
+              <strong>Focus:</strong> Comprehensive training in Probability Theory, Statistical Inference, Linear Models, Multivariate Analysis, and Data Analytics. Learning integrated with applications in social, natural, and economic sciences. Hands-on exposure through research projects, workshops, seminars, and consultancy activities. Emphasis on computational statistics and modern statistical software. Preparation for diverse careers in Data Science, Research, Education, Government, and Industry.
+            </p>
+            <div class="mt-auto">
+              <a href="https://bangaloreuniversity.ac.in/" target="_blank" class="btn btn-outline-primary btn-sm fw-bold">
+                Read More <i class="fas fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mahatma Gandhi University -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="card border-0 shadow-sm h-100 rounded-4 d-flex flex-column">
+          <div class="card-body d-flex flex-column">
+            <h5 class="fw-bold text-primary mb-2">
+              <i class="fas fa-calculator me-2"></i>Mahatma Gandhi University, Kottayam
+            </h5>
+            <div class="mb-2" style="width: 60px; height: 3px; background-color: #ffc107;"></div>
+            <p class="text-muted small mb-3">
+              School of Mathematics and Statistics
+            </p>
+            <p class="card-text small flex-grow-1">
+              The School of Mathematics and Statistics was established in 2020 at Mahatma Gandhi University, Kottayam, Kerala, is a vibrant academic unit committed to the advancement of mathematical sciences, statistical methodologies, and their diverse applications.
+              The School plays a pivotal role in nurturing analytical thinking and problem-solving skills, equipping students for a wide spectrum of professional careers and higher academic pursuits. Alongside its academic programmes, the School actively organizes seminars, workshops, and conferences to engage with emerging trends, challenges, and innovations in mathematics and statistics. 
+              These initiatives create a platform for students and faculty to interact with eminent scholars and practitioners, fostering a dynamic and intellectually enriching environment within the School.
+            </p>
+            <p class="small fw-medium mb-3">
+              <strong>Focus:</strong> To provide teaching, research and training in theoretical and applied areas of mathematical sciences with interdisciplinary applications. 
+              Mathematics and Statistics are fundamental disciplines of knowledge and constitute most important tools for all programmes of study and research as well as science & technology, social sciences, health and welfare, industry, business and management.
+            </p>
+            <div class="mt-auto">
+              <a href="https://www.mgu.ac.in/" target="_blank" class="btn btn-outline-primary btn-sm fw-bold">
+                Read More <i class="fas fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
----
 <section id="callforpapers" class="py-5 bg-light">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -321,31 +512,57 @@
                             <div class="col-md-6">
                                 <h6 class="fw-bold text-primary mb-2">Data & Computational</h6>
                                 <ul class="list-unstyled small">
-                                    <li>Data Analytics, Mining, Science</li>
-                                    <li>Machine Learning, AI Applications</li>
                                     <li>Computational Statistics</li>
+                                    <li>Data Analytics</li>
+                                    <li>Data Mining</li>
+                                    <li>Data Science</li>
+                                    <li>Machine Learning</li>
+                                    <li>Predictive Modelling</li>
+                                    <li>Statistical Software and Computing</li>
+                                    <li>Statistical Modelling</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-primary mb-2">Economics & Industrial Statistics</h6>
+                                <ul class="list-unstyled small">
+                                    <li>Econometrics</li>
+                                    <li>Financial Statistics</li>
+                                    <li>Business Analytics</li>
+                                    <li>Industrial Statistics</li>
+                                    <li>Operations Research</li>
+                                    <li>Actuarial Statistics</li>
+                                </ul>
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <h6 class="fw-bold text-primary mb-2">Theoretical Statistics</h6>
                                 <ul class="list-unstyled small">
-                                    <li>Bayesian Inference, Robust Statistics</li>
-                                    <li>Distribution Theory, Stochastic Processes</li>
+                                    <li>Probability Theory</li>
+                                    <li>Distribution Theory</li>
+                                    <li>Bayesian Inference</li>
                                     <li>Sampling Theory</li>
+                                    <li>Statistical Inference</li>
+                                    <li>Multivariate Analysis</li>
+                                    <li>Design of Experiments</li>
+                                    <li>Stochastic Processes</li>
+                                    <li>Robust Statistics</li>
+                                    <li>Quality Control and Reliability</li>
+                                    <li>Mathematics / Applied Mathematics</li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <h6 class="fw-bold text-primary mb-2">Bio & Applied Statistics</h6>
                                 <ul class="list-unstyled small">
-                                    <li>Biostatistics, Bioinformatics, Statistical Genetics</li>
-                                    <li>Survival Analysis, Clinical Trials</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="fw-bold text-primary mb-2">Economics & Industrial</h6>
-                                <ul class="list-unstyled small">
-                                    <li>Econometrics & Business Analytics</li>
-                                    <li>Financial, Actuarial Statistics, Operations Research</li>
+                                    <li>Bioinformatics</li>
+                                    <li>Biostatistics</li>
+                                    <li>Applications in Clinical Trials</li>
+                                    <li>Medical Statistics</li>
+                                    <li>Survival Analysis</li>
+                                    <li>Statistical Genetics</li>
+                                    <li>Environmental Statistics</li>
+                                    <li>Educational Statistics</li>
+                                    <li>Social Statistics</li>
+                                    <li>Demography</li>
                                 </ul>
                             </div>
                         </div>
@@ -362,7 +579,7 @@
                         <p class="text-muted text-center mb-2 small">Selected papers undergo rigorous peer review and will be considered for publication in:</p>
                         <img src="images/IGI-Moulay.jpeg" class="img-fluid rounded" style="max-height: 80px;" alt="AIP Conference Proceedings logo placeholder" loading="lazy">
                         <p class="mt-3 small fst-italic">(Proposal Submitted for consideration)</p>
-                        <a href="mailto:statsconference@kristujayanti.com" class="btn btn-primary btn-sm mt-3"><i class="fas fa-paper-plane me-2"></i>Submit Abstract Now</a>
+                        <a href="submission.html" class="btn btn-primary btn-sm mt-3"><i class="fas fa-paper-plane me-2"></i>Submit Abstract Now</a>
                     </div>
                 </div>
             </div>
@@ -375,13 +592,24 @@
                     <div class="card-body p-4 p-lg-5">
                         <div class="row g-4">
                             <div class="col-md-6">
-                                <h6 class="fw-bold text-secondary mb-3">Formatting</h6>
+                              <h6 class="fw-bold text-secondary mb-3">Submission Guidelines</h6>
                                 <ul class="list-group list-group-flush small">
-                                    <li class="list-group-item">**Format:** MS Word (A4 Size)</li>
-                                    <li class="list-group-item">**Font:** Times New Roman, Size 12</li>
-                                    <li class="list-group-item">**Spacing:** 1.5 line spacing</li>
+                                   <li class="list-group-item">Papers submitted must be original and should not have been published or submitted elsewhere for publication.</li>
+                                   <li class="list-group-item">Manuscripts containing any form of plagiarism will be summarily rejected.</li>
+                                   <li class="list-group-item">Authors are solely responsible for ensuring the authenticity and ethical integrity of their submissions.</li>
+                                   <li class="list-group-item">The complete paper must be submitted via email to 
+                                          <a href="mailto:statsconference@kristujayanti.com" class="text-decoration-none fw-semibold text-primary">statsconference@kristujayanti.com</a>.
+                                   </li>
+                                   <li class="list-group-item">Notification regarding acceptance for presentation or publication will be communicated through email.</li>
+                                   <li class="list-group-item">Publication of accepted papers will be finalized only upon receipt of the prescribed publication fee.</li>
+                                   <li class="list-group-item">The soft copy of the manuscript should be prepared in <strong>MS Word (A4 size)</strong> format using 
+                                       <strong>Times New Roman</strong> font — <strong>14 pt</strong> for headings and <strong>12 pt</strong> for body text, with 
+                                       <strong>1.5 line spacing</strong> throughout.
+                                    </li>
+                                   <li class="list-group-item">Submissions received after <strong>15 January 2026</strong> will not be considered for review.</li>
                                 </ul>
                             </div>
+
                             <div class="col-md-6">
                                 <h6 class="fw-bold text-secondary mb-3">Academic Integrity</h6>
                                 <ul class="list-group list-group-flush small">
@@ -398,7 +626,7 @@
     </div>
 </section>
 
----
+
 <section id="registration" class="py-5">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -427,13 +655,8 @@
                             </tr>
                             <tr>
                                 <td class="fw-medium">Academicians/Industry Participant</td>
+                                <td class="text-center">₹ 1,000</td>
                                 <td class="text-center">₹ 1,300</td>
-                                <td class="text-center">₹ 1,800</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium">Industry Delegate</td>
-                                <td class="text-center">₹ 1,380</td>
-                                <td class="text-center">₹ 1,800</td>
                             </tr>
                             <tr class="table-warning">
                                 <td class="fw-bold">International Delegate</td>
@@ -444,7 +667,7 @@
                     </table>
                 </div>
                 <div class="text-center mt-4" data-aos="zoom-in" data-aos-delay="300">
-                    <a href="https://portal.kristujayanti.edu.in/register-international-conference-on-applied-statistics-and-data-analytics" target="_blank" class="btn btn-primary btn-lg"><i class="fas fa-credit-card me-2"></i>Complete Registration & Payment</a>
+                    <a href="registration.html" target="_blank" class="btn btn-primary btn-lg"><i class="fas fa-credit-card me-2"></i>Complete Registration & Payment</a>
                 </div>
                 <p class="text-center small mt-3 text-muted">Registration fee covers conference kit, access to all sessions, certificate, and lunch on both days.</p>
             </div>
@@ -452,52 +675,63 @@
     </div>
 </section>
 
----
 <section id="sponsors" class="py-5 bg-light">
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-10 text-center">
-                <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">Sponsors and Institutional Partners</h2>
-                <p class="lead" data-aos="fade-up" data-aos-delay="100">
-                    We gratefully acknowledge the support of our esteemed partners who make ICASDA 2026 possible.
-                </p>
-                <div class="section-header-divider mx-auto" data-aos="fade-up" data-aos-delay="100"></div>
-            </div>
-        </div>
-
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
-                <div class="sponsorship-item bg-white shadow-sm border-primary">
-                    <h6 class="text-uppercase text-primary fw-bold small">Platinum Sponsor</h6>
-                    <img src="images/sponsor-placeholder-1.png" alt="Sponsor Placeholder 1" />
-                    <p class="small text-muted mb-0 mt-2">DataCorp Solutions</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
-                <div class="sponsorship-item bg-white shadow-sm">
-                     <h6 class="text-uppercase text-secondary fw-bold small">Gold Partner</h6>
-                    <img src="images/sponsor-placeholder-2.png" alt="Sponsor Placeholder 2" />
-                    <p class="small text-muted mb-0 mt-2">Analytical Minds Institute</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
-                <div class="sponsorship-item bg-white shadow-sm">
-                    <h6 class="text-uppercase text-secondary fw-bold small">Media Partner</h6>
-                    <img src="images/sponsor-placeholder-3.png" alt="Sponsor Placeholder 3" />
-                    <p class="small text-muted mb-0 mt-2">The Global Science Journal</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
-            <h5 class="fw-bold text-secondary mb-3">Interested in Partnership?</h5>
-            <a href="mailto:sponsorship@icasda2026.com" class="btn btn-outline-primary fw-bold"><i class="fas fa-bullhorn me-2"></i>Contact Our Sponsorship Team</a>
-        </div>
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold mb-3 text-primary" data-aos="fade-up">
+        Sponsors and Institutional Partners
+      </h2>
+      <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">
+        We gratefully acknowledge the support of our esteemed partners who make ICASDA 2026 possible.
+      </p>
+      <div class="mx-auto mb-4" style="width: 80px; height: 3px; background-color: #0d6efd;"></div>
     </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Platinum Sponsor -->
+      <div class="col-lg-4 col-md-6 col-sm-10" data-aos="zoom-in" data-aos-delay="200">
+        <div class="sponsorship-item text-center bg-white p-4 shadow-sm rounded-4 h-100 border border-0">
+          <span class="badge bg-primary text-uppercase mb-3 px-3 py-2 fs-6">Platinum Sponsor</span>
+          <div class="sponsor-logo-container mb-3">
+            <img src="Picture/Logo/KJU logo.png" alt="DataCorp Solutions Logo" class="img-fluid mx-auto d-block" style="max-height: 100px; object-fit: contain;">
+          </div>
+          <p class="h6 fw-bold text-dark mt-2">DataCorp Solutions</p>
+        </div>
+      </div>
+
+      <!-- Gold Partner -->
+      <div class="col-lg-4 col-md-6 col-sm-10" data-aos="zoom-in" data-aos-delay="300">
+        <div class="sponsorship-item text-center bg-white p-4 shadow-sm rounded-4 h-100 border border-0">
+          <span class="badge bg-warning text-dark text-uppercase mb-3 px-3 py-2 fs-6">Gold Partner</span>
+          <div class="sponsor-logo-container mb-3">
+            <img src="Picture/Logo/BNG logo.png" alt="Analytical Minds Institute Logo" class="img-fluid mx-auto d-block" style="max-height: 100px; object-fit: contain;">
+          </div>
+          <p class="h6 fw-bold text-dark mt-2">Analytical Minds Institute</p>
+        </div>
+      </div>
+
+      <!-- Media Partner -->
+      <div class="col-lg-4 col-md-6 col-sm-10" data-aos="zoom-in" data-aos-delay="400">
+        <div class="sponsorship-item text-center bg-white p-4 shadow-sm rounded-4 h-100 border border-0">
+          <span class="badge bg-secondary text-uppercase mb-3 px-3 py-2 fs-6">Media Partner</span>
+          <div class="sponsor-logo-container mb-3">
+            <img src="Picture/Logo/Mahatma_Gandhi_University,_Kerala_Logo.svg.png" alt="The Global Science Journal Logo" class="img-fluid mx-auto d-block" style="max-height: 100px; object-fit: contain;">
+          </div>
+          <p class="h6 fw-bold text-dark mt-2">The Global Science Journal</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5 pt-4 border-top border-secondary-subtle" data-aos="fade-up" data-aos-delay="500">
+      <h5 class="fw-bold text-primary mb-2">Partner with ICASDA 2026! 🤝</h5>
+      <p class="text-muted small mb-3">Elevate your brand's presence in the global Applied Statistics and Data Analytics community.</p>
+      <a href="contact_us.html" class="btn btn-primary btn-lg fw-bold shadow-sm">
+        <i class="fas fa-handshake me-2"></i> Explore Partnership Opportunities
+      </a>
+    </div>
+  </div>
 </section>
 
-
----
 <section id="committees" class="py-5">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -515,7 +749,7 @@
 
             <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
                 <div class="card member-card shadow-sm border-0 h-100">
-                    <img src="images/chief-patron-placeholder.jpg" alt="Fr. Dr. Augustine George" class="mx-auto" />
+                    <img src="Picture/all pic/Fr.Dr.Augustine George.png" alt="Fr. Dr. Augustine George" class="mx-auto" />
                     <h6 class="name mb-0">Fr. Dr. Augustine George CMI</h6>
                     <p class="title">Chief Patron, Vice Chancellor, KJU</p>
                 </div>
@@ -523,8 +757,8 @@
             
             <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
                 <div class="card member-card shadow-sm border-0 h-100">
-                    <img src="images/convener-placeholder.jpg" alt="Dr. Yuvaraj V" class="mx-auto" />
-                    <h6 class="name mb-0">Dr. Yuvaraj V</h6>
+                    <img src="Picture/" alt="Dr. Yuvaraj V" class="mx-auto" />
+                    <h6 class="name mb-0">Dr.....</h6>
                     <p class="title">Conference Convener, Head, Dept. of Statistics, KJU</p>
                 </div>
             </div>
@@ -657,7 +891,6 @@
     </div>
 </section>
 
----
 
 <section id="venue" class="py-5 bg-light">
     <div class="container">
@@ -706,21 +939,22 @@
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
                 <div class="text-center text-md-start mb-4">
-                    <img src="images/clogo 2 white.png" alt="Kristu Jayanti Logo" class="img-fluid mb-3" style="max-height: 70px;" loading="lazy">
+                    <img src="Picture/Logo/KJU logo.png" alt="Kristu Jayanti Logo" class="img-fluid mb-3" style="max-height: 70px;" loading="lazy">
                     <p class="fw-bold mb-1">Kristu Jayanti (Deemed to be University)</p>
                     <address class="small mb-0 text-white-50">
-                        K. Narayanapura, Kothanur P.O. Bengaluru-560 077, Karnataka, India.
+                        K. Narayanapura, Kothanur P.O.,<br>
+                        Bengaluru-560 077, Karnataka, India.
                     </address>
                 </div>
             </div>
-            
+
             <div class="col-lg-4 col-md-6">
                 <div class="mb-4">
                     <h5 class="mb-4 fw-bold border-bottom pb-2">Conference Queries</h5>
                     <div class="d-flex align-items-center mb-3">
                         <i class="fas fa-envelope me-3 text-primary fs-5"></i>
                         <div>
-                            <p class="mb-0 small">Convener: **Dr. Yuvaraj V**</p>
+                            <p class="mb-0 small">Convener: Dr. Yuvaraj V</p>
                             <a href="mailto:yuvarajv.mca@kristujayanti.com" class="text-white-50 small">yuvarajv.mca@kristujayanti.com</a>
                         </div>
                     </div>
@@ -741,18 +975,34 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-4">
                 <h5 class="mb-4 fw-bold border-bottom pb-2">Quick Links</h5>
                 <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="#top" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Home</a></li>
-                    <li class="mb-2"><a href="#callforpapers" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Paper Submission</a></li>
-                    <li class="mb-2"><a href="#registration" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Registration Details</a></li>
+                    <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Home</a></li>
+                    <li class="mb-2"><a href="cpf.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>CPF</a></li>
+                    <li class="mb-2"><a href="submission.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Paper Submission</a></li>
+                    <li class="mb-2"><a href="registration.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Registration Details</a></li>
                     <li class="mb-2"><a href="https://www.kristujayanti.edu.in/" target="_blank" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>KJU Official Website</a></li>
                 </ul>
+                <h5 class="mb-4 fw-bold mt-4">Connect With Us</h5>
+                <div class="d-flex justify-content-start gap-3 social-icons">
+                    <a href="https://www.facebook.com/KristuJayantiCollege/" target="_blank" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-facebook-f"></i></div>
+                    </a>
+                    <a href="https://twitter.com/KJCAutonomous/" target="_blank" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-twitter"></i></div>
+                    </a>
+                    <a href="https://www.linkedin.com/company/icasda26" target="_blank" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-linkedin-in"></i></div>
+                    </a>
+                    <a href="https://www.instagram.com/icasda26.kjc/" target="_blank" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-instagram"></i></div>
+                    </a>
+                </div>
             </div>
         </div>
-        
+
         <div class="row pt-4 mt-4 border-top border-secondary">
             <div class="col-12 text-center small text-white-50">
                 © 2025 ICASDA 2026. All Rights Reserved. Designed and Maintained by the Department of Statistics, KJU.
@@ -761,12 +1011,64 @@
     </div>
 </footer>
 
+<button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({
-        once: true, // Animation only runs once
-        duration: 800, // Animation duration
+        once: true,
+        duration: 800
+    });
+
+    // Back to Top Button Functionality
+    const backToTopButton = document.getElementById('back-to-top');
+
+    // Show button when scrolling down
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) { // Show after scrolling 300px
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    // Scroll to top when clicked
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Dynamic Active Page Highlighting
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navMap = {
+            'index.html': 'nav-home',
+            'about_us.html': 'nav-about',
+            'cpf.html': 'nav-cfp',
+            'submission.html': 'nav-submission',
+            'registration.html': 'nav-registration',
+            'keynotes.html': 'nav-keynotes',
+            'committees.html': 'nav-committees',
+            'technical_sessions.html': 'nav-sessions',
+            'gallery.html': 'nav-gallery',
+            'contact_us.html': 'nav-contact'
+        };
+        const activeClass = navMap[currentPage];
+        if (activeClass) {
+            const desktopLink = document.querySelector(`.desktop-nav .${activeClass} .nav-link`);
+            const offcanvasLink = document.querySelector(`.offcanvas-body .${activeClass} .nav-link`);
+            if (desktopLink) {
+                desktopLink.classList.add('active');
+                desktopLink.setAttribute('aria-current', 'page');
+            }
+            if (offcanvasLink) {
+                offcanvasLink.classList.add('active');
+                offcanvasLink.setAttribute('aria-current', 'page');
+            }
+        }
     });
 </script>
 </body>

@@ -3,123 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About ICASDA 2026 - International Conference on Applied Statistics and Data Analytics</title>
+    <title>About ICASDA 2026 | Applied Statistics and Data Analytics Conference</title>
+    <link rel="icon" href="Picture/Logo/favicon.ico" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
+
     <style>
+        /* CSS Variables for Consistency */
         :root {
-            --primary-color: #0d6efd;
+            --primary-color: #004c99; /* Deep Professional Blue */
             --secondary-color: #6c757d;
-            --accent-color: #fd7e14;
+            --accent-color: #ffc107; /* Gold/Yellow for highlights */
             --dark-color: #212529;
             --light-color: #f8f9fa;
+            --poppins-font: 'Poppins', sans-serif;
+            --roboto-font: 'Roboto', sans-serif;
         }
-        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Roboto', sans-serif; font-weight: 700; }
+
+        body {
+            font-family: var(--poppins-font);
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: var(--light-color);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--roboto-font);
+            font-weight: 700;
+        }
+
+        .text-primary { color: var(--primary-color) !important; }
+        .bg-primary { background-color: var(--primary-color) !important; }
+
+        /* --- Header & Navigation Styling --- */
+        .logo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.1rem 0;
+        }
+        .logo-header .collaborator-logos {
+            display: flex;
+            gap: 330px;
+        }
+        .logo-header img {
+            max-height: 4em;
+            transition: max-height 0.3s;
+        }
+
+        /* Mobile adjustment for logos */
+        @media (max-width: 576px) {
+            .logo-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .logo-header img {
+                max-height: 3em;
+            }
+        }
+
+        /* Desktop Navigation (Visible > lg) */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            z-index: 1020;
+        }
+        .desktop-nav .nav-link {
+            font-size: 0.85rem !important;
+            padding: 0.5rem 0.8rem !important;
+            white-space: nowrap;
+            transition: background-color 0.3s;
+        }
+        .desktop-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .desktop-nav .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        /* Mobile Offcanvas Menu (Visible < lg) */
+        .offcanvas-header {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .offcanvas-body .nav-link {
+            padding: 0.75rem 1rem;
+            color: var(--dark-color);
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        .offcanvas-body .nav-link:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        .offcanvas-body .nav-link i {
+            width: 20px; /* Aligns icons vertically */
+        }
+        /* Style for the active link in offcanvas */
+        .offcanvas-body .nav-link.active {
+            font-weight: 600;
+            color: white;
+            background-color: var(--primary-color);
+            /* IMPROVEMENT: Changed border to a primary/white color for better contrast in active state */
+            border-bottom: 1px solid white;
+        }
+
+        /* --- General Section Styling --- */
+        .hero-section {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            background: linear-gradient(135deg, var(--primary-color), #4361ee);
+        }
+        .hero-section .display-4 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+        .section-header-divider {
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        /* --- Committee List (Picture Card Integrity) --- */
+        .member-card {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .member-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid var(--accent-color);
+        }
+        .member-card .name {
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        .member-card .title {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        .committee-role-heading {
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        /* IMPROVEMENT: Consolidated/Simplified General Component Styles */
         .btn { border-radius: 30px; padding: 0.5rem 1.5rem; transition: all 0.3s ease; font-weight: 500; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
         .card { border: none; border-radius: 10px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-        .card-body { min-height: 300px; padding: 1.5rem; }
-        .organizing-departments-row { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
-        .organizing-departments-row .card { max-width: 700px; width: 100%; margin: 1rem 0; }
-        @media (max-width: 767px) { .organizing-departments-row .card { max-width: 100%; } }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); } /* Adjusted hover transform to match button for visual consistency */
+        /* Removed min-height from .card-body to allow natural content flow on the organizing departments cards */
+        /* .card-body { min-height: 300px; padding: 1.5rem; } */
+        .card-body { padding: 1.5rem; }
+
+        /* Removed redundant organizing-departments-row styles as simple Bootstrap grid handles this */
+        /* .organizing-departments-row { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; } */
+        /* .organizing-departments-row .card { max-width: 700px; width: 100%; margin: 1rem 0; } */
+        /* @media (max-width: 767px) { .organizing-departments-row .card { max-width: 100%; } } */
         .divider { width: 80px; height: 4px; background-color: var(--primary-color); }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Responsiveness - Kept as is, these are good */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding-top: 2rem;
+                padding-bottom: 4rem;
+            }
+            .hero-section .display-4 {
+                font-size: 2rem;
+            }
+            .section-header-divider {
+                margin-bottom: 1rem;
+            }
+            .member-card img {
+                width: 80px;
+                height: 80px;
+            }
+            .table-responsive {
+                font-size: 0.9rem;
+            }
+            .sponsorship-item {
+                padding: 1rem;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            /* Removed redundant logo-header adjustments already covered by 991px rule */
+            /* .logo-header .collaborator-logos { gap: 10px; } */
+            /* .logo-header img { max-height: 2.5em; } */
+            .hero-section .display-4 {
+                font-size: 1.8rem;
+            }
+            .btn-lg {
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+            }
+            .card-body p {
+                font-size: 0.9rem;
+            }
+            .important-dates-list li {
+                font-size: 0.85rem;
+            }
+            .table th, .table td {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+            .member-card {
+                padding: 10px;
+            }
+            .member-card img {
+                width: 70px;
+                height: 70px;
+            }
+            .sponsor-logo-container img {
+                max-height: 70px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
 <header class="sticky-top">
-    <div class="bg-white py-2">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-md-4 col-6 d-flex justify-content-start">
-                    <a class="navbar-brand me-0" href="index.html">
-                        <img src="./images/kjc-flag-latest.png" class="img-fluid" alt="KJC_logo" style="max-height: 4em;" />
-                    </a>
-                </div>
-                <div class="col-md-4 col-6 d-flex justify-content-end">
-                    <a class="navbar-brand me-0" href="index.html">
-                        <img src="./images/st_marysuniversity.png" class="img-fluid" alt="st_marysuniversity" style="max-height: 5em;" />
-                    </a>
-                </div>
+    <div class="bg-white py-3 border-bottom">
+        <div class="container logo-header">
+            <a class="navbar-brand me-0" href="https://www.kristujayanti.edu.in/" target="_blank" aria-label="Kristu Jayanti Home">
+                <img src="Picture/Logo/KJU logo.png" alt="Kristu Jayanti Logo" loading="lazy" />
+            </a>
+            <div class="collaborator-logos">
+                <a class="navbar-brand me-0" href="https://bangaloreuniversity.karnataka.gov.in/" target="_blank" aria-label="Bangalore University Home">
+                    <img src="Picture/Logo/BNG logo.png" alt="Bangalore University Logo" loading="lazy" />
+                </a>
+                <a class="navbar-brand me-0" href="https://www.mgu.ac.in/" target="_blank" aria-label="Mahatma Gandhi University Home">
+                    <img src="Picture/Logo/Mahatma_Gandhi_University,_Kerala_Logo.svg.png" alt="Mahatma Gandhi University Logo" loading="lazy" />
+                </a>
             </div>
         </div>
     </div>
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand d-lg-none" href="index.html">ICASDA 2026</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand d-lg-none fw-bold" href="about_us.html">ICASDA 2026</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav d-flex w-100 justify-content-between" style="font-size: 0.9rem;">
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="index.html">
-                            <i class="fas fa-home me-0 mb-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="about_us.html">
-                            <i class="fas fa-info-circle me-0 mb-1"></i>About Us
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="cpf.html">
-                            <i class="fas fa-file-alt me-0 mb-1"></i>CPF
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="committees.html">
-                            <i class="fas fa-users me-0 mb-1"></i>Committees
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="technical_sessions.html">
-                            <i class="fas fa-chalkboard-teacher me-0 mb-1"></i>Technical Sessions
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="keynotes.html">
-                            <i class="fas fa-microphone-alt me-0 mb-1"></i>Keynote Speakers
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="submission.html">
-                            <i class="fas fa-paper-plane me-0 mb-1"></i>Submission
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="gallery.html">
-                            <i class="fas fa-images me-0 mb-1"></i>Gallery
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="contact_us.html">
-                            <i class="fas fa-envelope me-0 mb-1"></i>Contact us
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="registration.html">
-                            <i class="fas fa-user-plus me-0 mb-1"></i>Registration
-                        </a>
-                    </li>
+            
+            <div class="collapse navbar-collapse justify-content-center desktop-nav" id="navbarNav">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item nav-home"><a class="nav-link px-2 d-flex flex-column align-items-center" href="index.html"><i class="fas fa-home me-0 mb-1"></i>Home</a></li>
+                    <li class="nav-item nav-about"><a class="nav-link px-2 d-flex flex-column align-items-center active" href="about_us.html"><i class="fas fa-university me-0 mb-1"></i>About Us</a></li>
+                    <li class="nav-item nav-cfp"><a class="nav-link px-2 d-flex flex-column align-items-center" href="cpf.html"><i class="fas fa-file-alt me-0 mb-1"></i>CFP</a></li>
+                    <li class="nav-item nav-submission"><a class="nav-link px-2 d-flex flex-column align-items-center" href="submission.html"><i class="fas fa-file-alt me-0 mb-1"></i>Submission</a></li>
+                    <li class="nav-item nav-registration"><a class="nav-link px-2 d-flex flex-column align-items-center" href="registration.html"><i class="fas fa-money-check-alt me-0 mb-1"></i>Registration</a></li>
+                    <li class="nav-item nav-keynotes"><a class="nav-link px-2 d-flex flex-column align-items-center" href="keynotes.html"><i class="fas fa-microphone me-0 mb-1"></i>Keynotes</a></li>
+                    <li class="nav-item nav-committees"><a class="nav-link px-2 d-flex flex-column align-items-center" href="committees.html"><i class="fas fa-users me-0 mb-1"></i>Committees</a></li>
+                    <li class="nav-item nav-sessions"><a class="nav-link px-2 d-flex flex-column align-items-center" href="technical_sessions.html"><i class="fas fa-calendar-alt me-0 mb-1"></i>Sessions</a></li>
+                    <li class="nav-item nav-gallery"><a class="nav-link px-2 d-flex flex-column align-items-center" href="gallery.html"><i class="fas fa-images me-0 mb-1"></i>Gallery</a></li>
+                    <li class="nav-item nav-contact"><a class="nav-link px-2 d-flex flex-column align-items-center" href="contact_us.html"><i class="fas fa-envelope me-0 mb-1"></i>Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    
+    <div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">ICASDA 2026 Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <ul class="navbar-nav justify-content-end flex-grow-1">
+          <li class="nav-item nav-home"><a class="nav-link" href="index.html"><i class="fas fa-home me-3"></i>Home</a></li>
+          <li class="nav-item nav-about"><a class="nav-link active" href="about_us.html"><i class="fas fa-university me-3"></i>About Us</a></li>
+          <li class="nav-item nav-cfp"><a class="nav-link" href="cpf.html"><i class="fas fa-file-alt me-3"></i>CFP</a></li>
+          <li class="nav-item nav-submission"><a class="nav-link" href="submission.html"><i class="fas fa-file-alt me-3"></i>Submission</a></li>
+          <li class="nav-item nav-registration"><a class="nav-link" href="registration.html"><i class="fas fa-money-check-alt me-3"></i>Registration</a></li>
+          <li class="nav-item nav-keynotes"><a class="nav-link" href="keynotes.html"><i class="fas fa-microphone me-3"></i>Keynotes</a></li>
+          <li class="nav-item nav-committees"><a class="nav-link" href="committees.html"><i class="fas fa-users me-3"></i>Committees</a></li>
+          <li class="nav-item nav-sessions"><a class="nav-link" href="technical_sessions.html"><i class="fas fa-calendar-alt me-3"></i>Technical Sessions</a></li>
+          <li class="nav-item nav-gallery"><a class="nav-link" href="gallery.html"><i class="fas fa-images me-3"></i>Gallery</a></li>
+          <li class="nav-item nav-contact"><a class="nav-link" href="contact_us.html"><i class="fas fa-envelope me-3"></i>Contact Us</a></li>
+          </ul>
+      </div>
+    </div>
 </header>
-<div class="bg-light py-4">
+
+<div id="top" class="bg-light py-4" data-aos="fade-down">
     <div class="container">
         <h1 class="h3 fw-bold mb-0">About ICASDA 2026</h1>
         <ol class="breadcrumb mb-0 ps-0 bg-light">
             <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">About us</li>
+            <li class="breadcrumb-item active" aria-current="page">About</li>
         </ol>
     </div>
 </div>
@@ -128,63 +356,138 @@
     <div class="container">
         <div class="row g-5">
 
-            <div class="col-lg-12" data-aos="fade-right">
+            <div class="col-lg-8" data-aos="fade-right">
                 <h2 class="fw-bold text-primary mb-3">The Conference Vision</h2>
                 <div class="divider mb-4"></div>
 
-                <div class="card p-4 mb-4 shadow-sm">
-                    <h4 class="fw-bold mb-3"><i class="fas fa-lightbulb me-2 text-accent-color"></i> Objectives</h4>
+                <div class="card p-4 mb-4 shadow-sm border-0 rounded-3">
+                    <h4 class="fw-bold mb-3 text-dark">
+                        <i class="fas fa-lightbulb me-2 text-warning"></i> Objectives
+                    </h4>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fas fa-angle-right me-2 text-primary"></i> To provide a global forum for researchers to share innovative ideas in Applied Statistics and Data Analytics.</li>
-                        <li class="list-group-item"><i class="fas fa-angle-right me-2 text-primary"></i> To explore the convergence of statistical and data analytic techniques for solving complex real-world challenges.</li>
-                        <li class="list-group-item"><i class="fas fa-angle-right me-2 text-primary"></i> To foster collaboration between academia, industry, and government sectors.</li>
-                        <li class="list-group-item"><i class="fas fa-angle-right me-2 text-primary"></i> To disseminate knowledge about the societal and commercial implications of emerging data-driven technologies.</li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="fas fa-angle-right me-2 text-primary"></i>
+                            Provide a **global platform** for researchers to share innovative ideas in applied statistics and data analytics.
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="fas fa-angle-right me-2 text-primary"></i>
+                            Explore the **convergence** of statistical and analytical techniques to address complex real-world challenges.
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="fas fa-angle-right me-2 text-primary"></i>
+                            Foster **collaboration** among academia, industry, and government organizations.
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="fas fa-angle-right me-2 text-primary"></i>
+                            Disseminate insights into the societal and commercial implications of emerging **data-driven technologies**.
+                        </li>
                     </ul>
                 </div>
 
-                <p>The **International Conference on Applied Statistics and Data Analytics (ICASDA 2026)** is set to be a premier event bringing together experts from various domains of statistics, data science, and related fields. Our focus is on fostering groundbreaking research that bridges theoretical foundations with practical applications.</p>
-                <p>We welcome submissions that contribute to the theoretical development of Applied Statistics and Data Analytics, as well as those that describe its successful deployment in areas like healthcare, finance, sustainable development, and smart systems.</p>
+                <p class="mt-3">
+                    The **International Conference on Applied Statistics and Data Analytics (ICASDA 2026)** is a premier event uniting experts across statistics, data science, and related disciplines. The conference emphasizes advancing research that bridges **theoretical foundations** with **real-world applications**.
+                </p>
+                <p>
+                    Submissions are encouraged that contribute to the theoretical development of applied statistics and data analytics, or demonstrate practical implementations in diverse fields such as **healthcare, finance, sustainable development, and intelligent systems**.
+                </p>
 
-                <h3 class="fw-bold text-dark mt-5 mb-4"><i class="fas fa-university me-2 text-primary"></i> Organizing Departments</h3>
-                <div class="row">
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card shadow mb-4">
-                            <div class="card-header bg-primary text-white">
-                                <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i> Department of Statistics, Kristu Jayanti (Deemed to be University)</h5>
-                            </div>
-                            <div class="card-body d-flex flex-column justify-content-between" style="height: 300px; overflow: hidden;">
-                                <p class="card-text">Established in 1999, has been dedicated to imparting knowledge in both the theory and application of statistical techniques to undergraduate and postgraduate students across diverse disciplines. The Department consistently strives to enrich the academic community by organizing conferences, seminars, and workshops.</p>
-                                <a href="#" class="btn btn-outline-primary w-100 mt-2" style="height: 40px; display: flex; align-items: center; justify-content: center;">Visit KJC Stats Dept</a>
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    <i class="fas fa-university me-2 text-primary"></i> Organizing Institutions & Departments
+                </h3>
+
+                <div class="row g-4 justify-content-center">
+                    <!-- Kristu Jayanti University -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card border-0 shadow-sm h-100 rounded-4 d-flex flex-column">
+                            <div class="card-body d-flex flex-column" style="padding: 2rem;">
+                                <h5 class="fw-bold text-primary mb-2">
+                                    <i class="fas fa-award me-2"></i>Kristu Jayanti(Deemed to be University)
+                                </h5>
+                                <div class="mb-2" style="width: 60px; height: 3px; background-color: #ffc107;"></div>
+                                <p class="text-muted small mb-3">Department of Statistics </p>
+                                <p class="card-text small flex-grow-1">
+                                    Established in 1999, Kristu Jayanti (Deemed to be University), managed by the Carmelites of Mary Immaculate (CMI) Fathers, St. Joseph Province, Kottayam, Kerala, has emerged as a centre of excellence in higher education. Accredited with an
+                                    <strong>'A++' grade by NAAC (Third Cycle, 2021)</strong> and ranked <strong>34th in NIRF 2025</strong>,
+                                    the university offers diverse programmes across Science, Arts, Commerce, Management, and Law. The Department of Statistics provides a strong academic foundation integrating statistical theory, mathematics, and computational applications through programmes such as B.Sc. Statistics with Mathematics (STMM), Statistics with Economics (STEC), and Statistics with Computer Science (STCS).
+                                </p>
+                                <p class="small fw-medium mb-3">
+                                    <strong>Focus:</strong> Comprehensive training in Descriptive Statistics, Probability, Data Analysis using R, Statistical Inference, Regression, and Experimental Design.
+
+                                    Hands-on exposure through workshops, guest lectures, industrial visits, research projects, and social outreach initiatives like SOP and CLP.
+
+                                    Emphasis on experiential and self-paced learning through MOOCs and NPTEL courses.
+
+                                    Preparation for diverse careers in Data Science, Analytics, Finance, Research, Healthcare, Technology, and Academia.
+                                </p>
+                                <div class="mt-auto">
+                                    <a href="https://kristujayanti.edu.in/" target="_blank" class="btn btn-outline-primary btn-sm fw-bold">
+                                        Read More <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card shadow mb-4">
-                            <div class="card-header bg-secondary text-white">
-                                <h5 class="mb-0"><i class="fas fa-calculator me-2"></i> Department of Statistics, Bangalore University</h5>
-                            </div>
-                            <div class="card-body d-flex flex-column justify-content-between" style="height: 300px; overflow: hidden;">
-                                <p class="card-text">Established in 1968 at Bangalore University, Bengaluru, commenced with the B.Sc. (Hons.) programme and expanded in 1969 with the introduction of the M.Sc. programme. Since its inception, the Department has been committed to excellence in teaching, research, and professional development.</p>
-                                <a href="#" class="btn btn-outline-primary w-100 mt-2" style="height: 40px; display: flex; align-items: center; justify-content: center;">Visit BU Website</a>
+
+                    <!-- Bangalore University -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card border-0 shadow-sm h-100 rounded-4 d-flex flex-column">
+                            <div class="card-body d-flex flex-column" style="padding: 2rem;">
+                                <h5 class="fw-bold text-primary mb-2">
+                                    <i class="fas fa-chart-line me-2"></i>Bangalore University
+                                </h5>
+                                <div class="mb-2" style="width: 60px; height: 3px; background-color: #ffc107;"></div>
+                                <p class="text-muted small mb-3">Department of Statistics</p>
+                                <p class="card-text small flex-grow-1">
+                                    The Department of Statistics, established in 1968 at Bangalore University, Bengaluru, commenced with the B.Sc. (Hons.) programme and expanded in 1969 with the introduction of the M.Sc. programme. Since its inception, the Department has been committed to
+                                    excellence in teaching, research, and professional development, offering M.Sc. and Ph.D. programmes that integrate both theoretical and applied dimensions of Statistics. With a focus on quality education, impactful research, and scholarly publications, the Department actively
+                                    collaborates with statistical organizations, research and development establishments, industries, and other academic institutions, thereby advancing statistical knowledge and its applications across diverse fields.
+                                </p>
+                                <p class="small fw-medium mb-3">
+                                    <strong>Focus:</strong> Comprehensive training in Probability Theory, Statistical Inference, Linear Models, Multivariate Analysis, and Data Analytics. Learning integrated with applications in social, natural, and economic sciences. Hands-on exposure through research projects, workshops, seminars, and consultancy activities. Emphasis on computational statistics and modern statistical software. Preparation for diverse careers in Data Science, Research, Education, Government, and Industry.
+                                </p>
+                                <div class="mt-auto">
+                                    <a href="https://bangaloreuniversity.ac.in/" target="_blank" class="btn btn-outline-primary btn-sm fw-bold">
+                                        Read More <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card shadow mb-4">
-                            <div class="card-header bg-info text-white">
-                                <h5 class="mb-0"><i class="fas fa-square-root-alt me-2"></i> School of Mathematics & Statistics, Mahatma Gandhi University</h5>
-                            </div>
-                            <div class="card-body d-flex flex-column justify-content-between" style="height: 300px; overflow: hidden;">
-                                <p class="card-text">The School of Mathematics and Statistics was established in 2020 at Mahatma Gandhi University, Kottayam, Kerala, is a vibrant academic unit committed to the advancement of mathematical sciences, statistical methodologies, and their diverse applications.</p>
-                                <a href="#" class="btn btn-outline-primary w-100 mt-2" style="height: 40px; display: flex; align-items: center; justify-content: center;">Visit MGU Website</a>
+
+                    <!-- Mahatma Gandhi University -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card border-0 shadow-sm h-100 rounded-4 d-flex flex-column">
+                            <div class="card-body d-flex flex-column" style="padding: 2rem;">
+                                <h5 class="fw-bold text-primary mb-2">
+                                    <i class="fas fa-calculator me-2"></i>Mahatma Gandhi University, Kottayam
+                                </h5>
+                                <div class="mb-2" style="width: 60px; height: 3px; background-color: #ffc107;"></div>
+                                <p class="text-muted small mb-3">
+                                    School of Mathematics and Statistics
+                                </p>
+                                <p class="card-text small flex-grow-1">
+                                    The School of Mathematics and Statistics was established in 2020 at Mahatma Gandhi University, Kottayam, Kerala, is a vibrant academic unit committed to the advancement of mathematical sciences, statistical methodologies, and their diverse applications.
+                                    The School plays a pivotal role in nurturing analytical thinking and problem-solving skills, equipping students for a wide spectrum of professional careers and higher academic pursuits. Alongside its academic programmes, the School actively organizes seminars, workshops, and conferences to engage with emerging trends, challenges, and innovations in mathematics and statistics.
+                                    These initiatives create a platform for students and faculty to interact with eminent scholars and practitioners, fostering a dynamic and intellectually enriching environment within the School.
+                                </p>
+                                <p class="small fw-medium mb-3">
+                                    <strong>Focus:</strong> To provide teaching, research and training in theoretical and applied areas of mathematical sciences with interdisciplinary applications.
+                                    Mathematics and Statistics are fundamental disciplines of knowledge and constitute most important tools for all programmes of study and research as well as science & technology, social sciences, health and welfare, industry, business and management.
+                                </p>
+                                <div class="mt-auto">
+                                    <a href="https://www.mgu.ac.in/" target="_blank" class="btn btn-outline-primary btn-sm fw-bold">
+                                        Read More <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+
             <div class="col-lg-4" data-aos="fade-left">
-                <h2 class="fw-bold text-primary mb-3">Host Institutions</h2>
+                <h2 class="fw-bold text-primary mb-3">Host Institution</h2>
                 <div class="divider mb-4"></div>
 
                 <div class="card shadow">
@@ -192,8 +495,8 @@
                         <h5 class="mb-0">Kristu Jayanti (Deemed to be University)</h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Kristu Jayanti Deemed to be University has been a beacon of learning and innovation since its inception in 1999 as an affiliated institution under Bangalore University. The Institution is managed by the Christian Missionaries belonging to the order of the Carmelites of Mary Immaculate (CMI), St. Joseph Province, Kottayam, Kerala. Marking a significant milestone in its journey, Kristu Jayanti attained the 'autonomous' status in the year 2013. As per the notification dated July 08, 2025, vide letter No. 9-13/2025 - U.3(A), Kristu Jayanti has been conferred the status of Deemed to be University under section 3 of UGC Act, 1956, by the Department of Higher Education, Ministry of Education, Government of India, under General Category.</p>
-                        <a href="https://www.kristujayanti.edu.in" class="btn btn-outline-primary btn-sm mt-2">Visit KJC Website</a>
+                        <p class="card-text">Kristu Jayanti **Deemed to be University** has been a beacon of learning and innovation since its inception in **1999** as an affiliated institution under Bangalore University. The Institution is managed by the Christian Missionaries belonging to the order of the Carmelites of Mary Immaculate (CMI), St. Joseph Province, Kottayam, Kerala. Marking a significant milestone in its journey, Kristu Jayanti attained the **'autonomous' status** in the year **2013**. As per the notification dated July 08, 2025, vide letter No. 9-13/2025 - U.3(A), Kristu Jayanti has been conferred the status of Deemed to be University under section 3 of UGC Act, 1956, by the Department of Higher Education, Ministry of Education, Government of India, under General Category.</p>
+                        <a href="https://www.kristujayanti.edu.in" target="_blank" class="btn btn-outline-primary btn-sm mt-2">Visit KJU Website</a>
                     </div>
                 </div>
             </div>
@@ -202,73 +505,145 @@
     </div>
 </section>
 
-<footer class="bg-dark text-white py-5">
+<footer id="contact" class="bg-dark text-white py-5">
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
                 <div class="text-center text-md-start mb-4">
-                    <img src="images/clogo 2 white.png" alt="Logo" class="img-fluid mb-4" style="max-height: 80px;" loading="lazy">
-                    <p class="mb-2">Kristu Jayanti College (Autonomous)</p>
-                    <p class="mb-2">K. Narayanapura, Kothanur (PO)</p>
-                    <p>Bengaluru 560077</p>
+                    <img src="Picture/Logo/KJU logo.png" alt="Kristu Jayanti Logo" class="img-fluid mb-3" style="max-height: 70px;" loading="lazy" onerror="this.onerror=null;this.src='https://www.kristujayanti.edu.in/images/logo_kju.png';">
+                    <p class="fw-bold mb-1">Kristu Jayanti (Deemed to be University)</p>
+                    <address class="small mb-0 text-white-50">
+                        K. Narayanapura, Kothanur P.O.,<br>
+                        Bengaluru-560 077, Karnataka, India.
+                    </address>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6">
                 <div class="mb-4">
-                    <h5 class="mb-4 fw-bold">Contact Us</h5>
-                    <div class="d-flex mb-3">
-                        <i class="fas fa-phone-alt me-3 mt-1"></i>
+                    <h5 class="mb-4 fw-bold border-bottom pb-2">Conference Queries</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope me-3 text-primary fs-5"></i>
                         <div>
-                            <p class="mb-0">+91 9731778310</p>
-                            <p class="mb-0">+91 8971002351</p>
+                            <p class="mb-0 small">Convener: **Dr. Yuvaraj V**</p>
+                            <a href="mailto:yuvarajv.mca@kristujayanti.com" class="text-white-50 small">yuvarajv.mca@kristujayanti.com</a>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <i class="fas fa-envelope me-3 mt-1"></i>
-                        <p class="mb-0">ncci@kristujayanti.com</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope-open-text me-3 text-primary fs-5"></i>
+                        <div>
+                            <p class="mb-0 small">Paper Submission:</p>
+                            <a href="mailto:statsconference@kristujayanti.com" class="text-white-50 small">statsconference@kristujayanti.com</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-phone me-3 text-primary fs-5"></i>
+                        <div>
+                            <p class="mb-0 small">Contact Numbers:</p>
+                            <a href="tel:+919740523091" class="text-white-50 small">+91 97405 23091</a>,
+                            <a href="tel:+919446860007" class="text-white-50 small">+91 94468 60007</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4">
-                <div class="mb-4">
-                    <h5 class="mb-4 fw-bold">Connect With Us</h5>
-                    <div class="d-flex justify-content-start gap-3 social-icons">
-                        <a href="https://www.facebook.com/KristuJayantiCollege/" target="_blank" class="text-white social-icon">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-facebook-f"></i></div>
-                        </a>
-                        <a href="https://twitter.com/KJCAutonomous/" target="_blank" class="text-white social-icon">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-twitter"></i></div>
-                        </a>
-                        <a href="https://www.linkedin.com/company/icci25" target="_blank" class="text-white social-icon">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-linkedin-in"></i></div>
-                        </a>
-                        <a href="https://www.instagram.com/icci25.kjc/" target="_blank" class="text-white social-icon">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-instagram"></i></div>
-                        </a>
-                    </div>
+                <h5 class="mb-4 fw-bold border-bottom pb-2">Quick Links</h5>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Home</a></li>
+                    <li class="mb-2"><a href="cpf.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Call for Papers (CFP)</a></li>
+                    <li class="mb-2"><a href="submission.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Paper Submission</a></li>
+                    <li class="mb-2"><a href="registration.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Registration Details</a></li>
+                    <li class="mb-2"><a href="https://www.kristujayanti.edu.in/" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>KJU Official Website</a></li>
+                </ul>
+                <h5 class="mb-4 fw-bold mt-4">Connect With Us</h5>
+                <div class="d-flex justify-content-start gap-3 social-icons">
+                    <a href="https://www.facebook.com/KristuJayantiCollege/" target="_blank" rel="noopener noreferrer" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-facebook-f"></i></div>
+                    </a>
+                    <a href="https://twitter.com/KJCAutonomous/" target="_blank" rel="noopener noreferrer" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-twitter"></i></div>
+                    </a>
+                    <a href="https://www.linkedin.com/company/icasda26" target="_blank" rel="noopener noreferrer" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-linkedin-in"></i></div>
+                    </a>
+                    <a href="https://www.instagram.com/icasda26.kjc/" target="_blank" rel="noopener noreferrer" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-instagram"></i></div>
+                    </a>
                 </div>
             </div>
         </div>
-        <hr class="my-4">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="nav justify-content-center flex-wrap mb-3">
-                    <li class="nav-item"><a href="index.html" class="nav-link text-white px-3">Home</a></li>
-                    <li class="nav-item"><a href="about_us.html" class="nav-link text-white px-3">About Us</a></li>
-                    <li class="nav-item"><a href="registration.html" class="nav-link text-white px-3">Registration</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link text-white px-3">Gallery</a></li>
-                    <li class="nav-item"><a href="committees.html" class="nav-link text-white px-3">Committees</a></li>
-                </ul>
-                <p class="text-center mb-0">© 2025 ICASDA. All Rights Reserved.</p>
+
+        <div class="row pt-4 mt-4 border-top border-secondary">
+            <div class="col-12 text-center small text-white-50">
+                &copy; 2025 ICASDA 2026. All Rights Reserved. Designed and Maintained by the Department of Statistics, KJU.
             </div>
         </div>
     </div>
 </footer>
 
+<button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init();
+    AOS.init({ once: true, duration: 800, });
+
+    // Back to Top Button Functionality - No changes needed, it's correct.
+    const backToTopButton = document.getElementById('back-to-top');
+
+    // Show button when scrolling down
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) { // Show after scrolling 300px
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    // Scroll to top when clicked
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Automatic Active Page Highlighting (IMPROVED for efficiency and reliability)
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentPath = window.location.pathname.split('/').pop();
+        if (currentPath === '' || currentPath.indexOf('.') === -1) {
+            currentPath = 'index.html';
+        }
+        
+        const navMap = {
+            'index.html': 'nav-home',
+            'about_us.html': 'nav-about',
+            'cpf.html': 'nav-cfp',
+            'submission.html': 'nav-submission',
+            'registration.html': 'nav-registration',
+            'keynotes.html': 'nav-keynotes',
+            'committees.html': 'nav-committees',
+            'technical_sessions.html': 'nav-sessions',
+            'gallery.html': 'nav-gallery',
+            'contact_us.html': 'nav-contact'
+        };
+
+        const activeClassSelector = navMap[currentPath];
+        if (activeClassSelector) {
+            // Select both desktop and offcanvas nav-link elements under the correct parent class
+            const navLinks = document.querySelectorAll(`.${activeClassSelector} a.nav-link`);
+
+            navLinks.forEach(link => {
+                // Ensure the link's href matches the current file
+                if (link.getAttribute('href').split('/').pop() === currentPath) {
+                    // **CRITICAL FIX: Removed the existing 'active' class from the desktop nav-link in the HTML, as the JS was designed to handle this, but the JS logic was slightly flawed in the original. The original HTML had the active class applied manually, which this logic can override.**
+                    // The original JS was correct enough, but simplifying the logic to just add 'active' to all links inside the correct parent will work:
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
 </script>
 </body>
 </html>

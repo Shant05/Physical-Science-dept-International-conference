@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,107 +10,267 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <style>
+        /* CSS Variables for Consistency */
         :root {
-            --primary-color: #0d6efd;
+            --primary-color: #004c99; /* Deep Professional Blue */
             --secondary-color: #6c757d;
-            --accent-color: #fd7e14;
+            --accent-color: #ffc107; /* Gold/Yellow for highlights */
             --dark-color: #212529;
             --light-color: #f8f9fa;
+            --poppins-font: 'Poppins', sans-serif;
+            --roboto-font: 'Roboto', sans-serif;
         }
-        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Roboto', sans-serif; font-weight: 700; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--poppins-font);
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: var(--light-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--roboto-font);
+            font-weight: 700;
+        }
+
+        .text-primary { color: var(--primary-color) !important; }
+        .bg-primary { background-color: var(--primary-color) !important; }
+
+        /* --- Header & Navigation Styling --- */
+        .logo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.1rem 0;
+        }
+        .logo-header .collaborator-logos {
+            display: flex;
+            gap: 330px;
+        }
+        .logo-header img {
+            max-height: 4em;
+            transition: max-height 0.3s;
+        }
+
+        /* Mobile adjustment for logos */
+        @media (max-width: 576px) {
+            .logo-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .logo-header img {
+                max-height: 3em;
+            }
+        }
+
+        /* Desktop Navigation (Visible > lg) */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            z-index: 1020;
+        }
+        .desktop-nav .nav-link {
+            font-size: 0.85rem !important;
+            padding: 0.5rem 0.8rem !important;
+            white-space: nowrap;
+            transition: background-color 0.3s;
+        }
+        .desktop-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .desktop-nav .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            border-radius: 4px;
+        }
+
+        /* Mobile Offcanvas Menu (Visible < lg) */
+        .offcanvas-header {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .offcanvas-body .nav-link {
+            padding: 0.75rem 1rem;
+            color: var(--dark-color);
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        .offcanvas-body .nav-link:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        .offcanvas-body .nav-link i {
+            width: 20px; /* Aligns icons vertically */
+        }
+        /* Style for the active link in offcanvas */
+        .offcanvas-body .nav-link.active {
+            font-weight: 600;
+            color: white;
+            background-color: var(--primary-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        /* --- General Section Styling --- */
+        .hero-section {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            background: linear-gradient(135deg, var(--primary-color), #4361ee);
+        }
+        .hero-section .display-4 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+        .section-header-divider {
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        /* --- Committee List (Picture Card Integrity) --- */
+        .member-card {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .member-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid var(--accent-color);
+        }
+        .member-card .name {
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        .member-card .title {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        .committee-role-heading {
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
         .btn { border-radius: 30px; padding: 0.5rem 1.5rem; transition: all 0.3s ease; font-weight: 500; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
         .card { border: none; border-radius: 10px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
         .committee-card .card-body { min-height: 120px; }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
 <body>
 
+
 <header class="sticky-top">
-    <div class="bg-white py-2">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-md-4 col-6 d-flex justify-content-start">
-                    <a class="navbar-brand me-0" href="index.html">
-                        <img src="./images/kjc-flag-latest.png" class="img-fluid" alt="KJC_logo" style="max-height: 4em;" />
-                    </a>
-                </div>
-                <div class="col-md-4 col-6 d-flex justify-content-end">
-                    <a class="navbar-brand me-0" href="index.html">
-                        <img src="./images/st_marysuniversity.png" class="img-fluid" alt="st_marysuniversity" style="max-height: 5em;" />
-                    </a>
-                </div>
+    <div class="bg-white py-3 border-bottom">
+        <div class="container logo-header">
+            <a class="navbar-brand me-0" href="https://www.kristujayanti.edu.in/" target="_blank" aria-label="Kristu Jayanti Home">
+                <img src="Picture/Logo/KJU logo.png" alt="Kristu Jayanti Logo" loading="lazy" />
+            </a>
+            <div class="collaborator-logos">
+                <a class="navbar-brand me-0" href="https://bangaloreuniversity.karnataka.gov.in/" target="_blank" aria-label="Bangalore University Home">
+                    <img src="Picture/Logo/BNG logo.png" alt="Bangalore University Logo" loading="lazy" />
+                </a>
+                 <a class="navbar-brand me-0" href="https://www.mgu.ac.in/" target="_blank" aria-label="Mahatma Gandhi University Home">
+                    <img src="Picture/Logo/Mahatma_Gandhi_University,_Kerala_Logo.svg.png" alt="Mahatma Gandhi University Logo" loading="lazy" />
+                </a>
             </div>
         </div>
     </div>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand d-lg-none" href="index.html">ICASDA 2026</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand d-lg-none fw-bold" href="index.html">ICASDA 2026</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav d-flex w-100 justify-content-between" style="font-size: 0.9rem;">
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="index.html">
-                            <i class="fas fa-home me-0 mb-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="about_us.html">
-                            <i class="fas fa-info-circle me-0 mb-1"></i>About Us
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="cpf.html">
-                            <i class="fas fa-file-alt me-0 mb-1"></i>CPF
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="committees.html">
-                            <i class="fas fa-users me-0 mb-1"></i>Committees
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="technical_sessions.html">
-                            <i class="fas fa-chalkboard-teacher me-0 mb-1"></i>Technical Sessions
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="keynotes.html">
-                            <i class="fas fa-microphone-alt me-0 mb-1"></i>Keynote Speakers
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="submission.html">
-                            <i class="fas fa-paper-plane me-0 mb-1"></i>Submission
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="gallery.html">
-                            <i class="fas fa-images me-0 mb-1"></i>Gallery
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="contact_us.html">
-                            <i class="fas fa-envelope me-0 mb-1"></i>Contact us
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-2 d-flex flex-column align-items-center" href="registration.html">
-                            <i class="fas fa-user-plus me-0 mb-1"></i>Registration
-                        </a>
-                    </li>
+
+            <div class="collapse navbar-collapse justify-content-center desktop-nav" id="navbarNav">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item nav-home"><a class="nav-link px-2 d-flex flex-column align-items-center" href="index.html"><i class="fas fa-home me-0 mb-1"></i>Home</a></li>
+                    <li class="nav-item nav-about"><a class="nav-link px-2 d-flex flex-column align-items-center" href="about_us.html"><i class="fas fa-university me-0 mb-1"></i>About Us</a></li>
+                    <li class="nav-item nav-cpf"><a class="nav-link px-2 d-flex flex-column align-items-center" href="cpf.html"><i class="fas fa-file-alt me-0 mb-1"></i>CFP</a></li>
+                    <li class="nav-item nav-submission"><a class="nav-link px-2 d-flex flex-column align-items-center" href="submission.html"><i class="fas fa-file-alt me-0 mb-1"></i>Submission</a></li>
+                    <li class="nav-item nav-registration"><a class="nav-link px-2 d-flex flex-column align-items-center" href="registration.html"><i class="fas fa-money-check-alt me-0 mb-1"></i>Registration</a></li>
+                    <li class="nav-item nav-keynotes"><a class="nav-link px-2 d-flex flex-column align-items-center" href="keynotes.html"><i class="fas fa-microphone me-0 mb-1"></i>Keynotes</a></li>
+                    <li class="nav-item nav-committees"><a class="nav-link px-2 d-flex flex-column align-items-center" href="committees.html"><i class="fas fa-users me-0 mb-1"></i>Committees</a></li>
+                    <li class="nav-item nav-sessions"><a class="nav-link px-2 d-flex flex-column align-items-center" href="technical_sessions.html"><i class="fas fa-calendar-alt me-0 mb-1"></i>Sessions</a></li>
+                    <li class="nav-item nav-gallery"><a class="nav-link px-2 d-flex flex-column align-items-center" href="gallery.html"><i class="fas fa-images me-0 mb-1"></i>Gallery</a></li>
+                    <li class="nav-item nav-contact"><a class="nav-link px-2 d-flex flex-column align-items-center" href="contact_us.html"><i class="fas fa-envelope me-0 mb-1"></i>Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">ICASDA 2026 Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <ul class="navbar-nav justify-content-end flex-grow-1">
+          <li class="nav-item nav-home"><a class="nav-link" href="index.html"><i class="fas fa-home me-3"></i>Home</a></li>
+          <li class="nav-item nav-about"><a class="nav-link" href="about_us.html"><i class="fas fa-university me-3"></i>About Us</a></li>
+          <li class="nav-item nav-cpf"><a class="nav-link" href="cpf.html"><i class="fas fa-file-alt me-3"></i>CFP</a></li>
+          <li class="nav-item nav-submission"><a class="nav-link" href="submission.html"><i class="fas fa-file-alt me-3"></i>Submission</a></li>
+          <li class="nav-item nav-registration"><a class="nav-link" href="registration.html"><i class="fas fa-money-check-alt me-3"></i>Registration</a></li>
+          <li class="nav-item nav-keynotes"><a class="nav-link" href="keynotes.html"><i class="fas fa-microphone me-3"></i>Keynotes</a></li>
+          <li class="nav-item nav-committees"><a class="nav-link" href="committees.html"><i class="fas fa-users me-3"></i>Committees</a></li>
+          <li class="nav-item nav-sessions"><a class="nav-link" href="technical_sessions.html"><i class="fas fa-calendar-alt me-3"></i>Technical Sessions</a></li>
+          <li class="nav-item nav-gallery"><a class="nav-link" href="gallery.html"><i class="fas fa-images me-3"></i>Gallery</a></li>
+          <li class="nav-item nav-contact"><a class="nav-link" href="contact_us.html"><i class="fas fa-envelope me-3"></i>Contact Us</a></li>
+          </ul>
+      </div>
+    </div>
 </header>
-<div class="bg-light py-4">
+<div id="top" class="bg-light py-4" data-aos="fade-down">
     <div class="container">
-        <h1 class="h3 fw-bold mb-0">Organizing Committees</h1>
-        <ol class="breadcrumb mb-0 ps-0 bg-light">
+        <h1 class="h3 fw-bold mb-0">Organizing Committee</h1>
+        <ol class="breadcrumb mb-0 ps-0 bg-light" data-aos="fade-down" data-aos-delay="200">
             <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Committees</li>
         </ol>
@@ -118,360 +278,430 @@
 </div>
 
 <section class="py-5">
-    <div class="container">
-        
-        <div class="mb-5" data-aos="fade-up">
-            <h2 class="fw-bold text-center text-primary mb-3">Chief Patron</h2>
-            <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
-            <div class="row g-4 justify-content-center">
+  <div class="container">
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Fr. Dr. Augustine George CMI</h5>
-                            <p class="card-text text-secondary mb-1">Chief Patron</p>
-                            <p class="small mb-0">Vice Chancellor, Kristu Jayanti (Deemed to be University)</p>
-                        </div>
-                    </div>
-                </div>
-
+   --Chief Patron --
+    <div class="mb-5" data-aos="fade-up">
+      <h2 class="fw-bold text-center text-primary mb-3">Chief Patron</h2>
+      <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Fr.Dr.Augustine George.png" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Patron" loading="lazy">
             </div>
-        </div>
-
-        <div class="mb-5" data-aos="fade-up" data-aos-delay="50">
-            <h2 class="fw-bold text-center text-primary mb-3">Patron</h2>
-            <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
-            <div class="row g-4 justify-content-center">
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Fr. Dr. Lijo P Thomas CMI</h5>
-                            <p class="card-text text-secondary mb-1">Pro-Vice Chancellor</p>
-                            <p class="small mb-0">Kristu Jayanti (Deemed to be University)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. Aloysius Edward</h5>
-                            <p class="card-text text-secondary mb-1">Registrar In-charge</p>
-                            <p class="small mb-0">Kristu Jayanti (Deemed to be University)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Fr. Emmanuel P J CMI</h5>
-                            <p class="card-text text-secondary mb-1">Director</p>
-                            <p class="small mb-0">Kristu Jayanti School of Law</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Fr. Som Zacharia CMI</h5>
-                            <p class="card-text text-secondary mb-1">Director</p>
-                            <p class="small mb-0">Planning and Infrastructure Development</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Fr. Dr. Jais V Thomas CMI</h5>
-                            <p class="card-text text-secondary mb-1">Finance Officer In-charge</p>
-                            <p class="small mb-0">Kristu Jayanti (Deemed to be University)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Fr. Joshy Mathew CMI</h5>
-                            <p class="card-text text-secondary mb-1">Chief Human Resource Officer</p>
-                            <p class="small mb-0">Director, School of Humanities and Social Sciences</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Fr. Deepu Joy CMI</h5>
-                            <p class="card-text text-secondary mb-1">Director</p>
-                            <p class="small mb-0">Student Welfare Office</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Fr. Dr. Marialal Joseph CMI</h5>
-                            <p class="card-text text-secondary mb-1">Director</p>
-                            <p class="small mb-0">Research & Development</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. Calistus Jude A L</h5>
-                            <p class="card-text text-secondary mb-1">Dean</p>
-                            <p class="small mb-0">Academics</p>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Fr. Dr. Augustine George CMI</h5>
+              <p class="card-text text-secondary mb-1">Vice Chancellor</p>
+              <p class="small mb-0">Kristu Jayanti (Deemed to be University)</p>
             </div>
+          </div>
         </div>
-
-        <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="fw-bold text-center text-primary mb-3">Chief Conveners</h2>
-            <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
-            <div class="row g-4 justify-content-center">
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Convener" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. Kumar</h5>
-                            <p class="card-text text-secondary mb-1">Dean</p>
-                            <p class="small mb-0">School of Computation and Physical Sciences</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-female.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Convener" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. Liji George</h5>
-                            <p class="card-text text-secondary mb-1">Head</p>
-                            <p class="small mb-0">Department of Physical Sciences</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Convener" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. Parameshwar V Pandit</h5>
-                            <p class="card-text text-secondary mb-1">Senior Professor</p>
-                            <p class="small mb-0">Department of Statistics, Bangalore University</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Convener" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. K.K. Jose</h5>
-                            <p class="card-text text-secondary mb-1">Director</p>
-                            <p class="small mb-0">School of Mathematics & Statistics, Mahatma Gandhi University</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="mb-5" data-aos="fade-up" data-aos-delay="150">
-            <h2 class="fw-bold text-center text-primary mb-3">Conference Convener</h2>
-            <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
-            <div class="row g-4 justify-content-center">
-
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="p-3 bg-light"><img src="images/placeholder-male.jpg" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;" alt="Conference Convener" loading="lazy"></div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. Yuvaraj V</h5>
-                            <p class="card-text text-secondary mb-1">Conference Convener</p>
-                            <p class="small mb-0">Department of Statistics</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="fw-bold text-center text-primary mb-3">Technical Program Committee</h2>
-            <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
-            <div class="row g-4">
-                
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. A. B. Smith</h5>
-                            <p class="card-text text-secondary mb-1">Professor</p>
-                            <p class="small mb-0">MIT, USA</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. P. Q. Chen</h5>
-                            <p class="card-text text-secondary mb-1">Associate Professor</p>
-                            <p class="small mb-0">Tsinghua University, China</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. M. S. Kumar</h5>
-                            <p class="card-text text-secondary mb-1">TPC Chair</p>
-                            <p class="small mb-0">IIT Bombay, India</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Dr. S. K. Khan</h5>
-                            <p class="card-text text-secondary mb-1">Scientist</p>
-                            <p class="small mb-0">CERN, Switzerland</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="200">
-            <h2 class="fw-bold text-center text-primary mb-3">Local Organizing Committee</h2>
-            <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
-            <div class="row g-4">
-                
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Prof. S. J. Mary</h5>
-                            <p class="card-text text-secondary mb-1">LOC Co-Chair</p>
-                            <p class="small mb-0">Kristu Jayanti College</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Prof. T. V. Rao</h5>
-                            <p class="card-text text-secondary mb-1">Finance Chair</p>
-                            <p class="small mb-0">Kristu Jayanti College</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Prof. D. K. Sharma</h5>
-                            <p class="card-text text-secondary mb-1">Publication Chair</p>
-                            <p class="small mb-0">Kristu Jayanti College</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card committee-card shadow h-100 text-center">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-dark">Prof. V. L. Hema</h5>
-                            <p class="card-text text-secondary mb-1">Hospitality Chair</p>
-                            <p class="small mb-0">Kristu Jayanti College</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+
+    -- Patrons --
+    <div class="mb-5" data-aos="fade-up" data-aos-delay="50">
+      <h2 class="fw-bold text-center text-primary mb-3">Patrons</h2>
+      <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
+      <div class="row g-4 justify-content-center">
+
+        -- Patron Cards --
+        -- 1 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Fr. Dr. Lijo P Thomas CMI.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Fr. Dr. Lijo P Thomas CMI</h5>
+              <p class="card-text text-secondary mb-1">Pro-Vice Chancellor</p>
+            </div>
+          </div>
+        </div>
+
+        -- 2 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Dr. Aloysius Edward.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Dr. Aloysius Edward</h5>
+              <p class="card-text text-secondary mb-1">Registrar In-charge</p>
+            </div>
+          </div>
+        </div>
+
+        -- 3 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Fr. Emmanuel P J CMI.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Fr. Emmanuel P J CMI</h5>
+              <p class="card-text text-secondary mb-1">Director</p>
+              <p class="small mb-0">Kristu Jayanti School of Law</p>
+            </div>
+          </div>
+        </div>
+
+        -- 4 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Fr. Som Zacharia CMI.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Fr. Som Zacharia CMI</h5>
+              <p class="card-text text-secondary mb-1">Director</p>
+              <p class="small mb-0">Planning and Infrastructure Development</p>
+            </div>
+          </div>
+        </div>
+
+        -- 5 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Fr. Dr. Jais V Thomas CMI.png" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Fr. Dr. Jais V Thomas CMI</h5>
+              <p class="card-text text-secondary mb-1">Finance Officer In-charge</p>
+            </div>
+          </div>
+        </div>
+
+        -- 6 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Fr. Joshy Mathew CMI.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Fr. Joshy Mathew CMI</h5>
+              <p class="card-text text-secondary mb-1">Chief Human Resource Officer (CHRO)</p>
+              <p class="small mb-0">Director, School of Humanities and Social Sciences</p>
+            </div>
+          </div>
+        </div>
+
+        -- 7 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Fr. Deepu Joy CMI.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Fr. Deepu Joy CMI</h5>
+              <p class="card-text text-secondary mb-1">Director</p>
+              <p class="small mb-0">Student Welfare Office</p>
+            </div>
+          </div>
+        </div>
+
+        -- 8 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Fr. Dr. Marialal Joseph CMI.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Fr. Dr. Marialal Joseph CMI</h5>
+              <p class="card-text text-secondary mb-1">Director</p>
+              <p class="small mb-0">Research &amp; Development</p>
+            </div>
+          </div>
+        </div>
+
+        -- 9 --
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light">
+              <img src="Picture/all pic/Dr. Calistus Jude A L.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Patron" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Dr. Calistus Jude A L</h5>
+              <p class="card-text text-secondary mb-1">Dean</p>
+              <p class="small mb-0">Academics</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    -- Chief Conveners --
+    <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="fw-bold text-center text-primary mb-3">Chief Conveners</h2>
+      <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light"><img src="Picture/all pic/Dr. R Kumar.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Convener" loading="lazy"></div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Dr. Kumar</h5>
+              <p class="card-text text-secondary mb-1">Dean</p>
+              <p class="small mb-0">School of Computation and Physical Sciences</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light"><img src="Picture/all pic/Dr. Liji George.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Convener" loading="lazy"></div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Dr. Liji George</h5>
+              <p class="card-text text-secondary mb-1">Head</p>
+              <p class="small mb-0">Department of Physical Sciences</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light"><img src="Picture/all pic/Dr. Parameshwar V Pandit.webp"
+                class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;"
+                alt="Chief Convener" loading="lazy"></div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Dr. Parameshwar V Pandit</h5>
+              <p class="card-text text-secondary mb-1">Senior Professor</p>
+              <p class="small mb-0">Department of Statistics, Bangalore University</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light"><img src="Picture/all pic/Dr. K.K. Jose.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Chief Convener" loading="lazy"></div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Dr. K.K. Jose</h5>
+              <p class="card-text text-secondary mb-1">Director</p>
+              <p class="small mb-0">School of Mathematics &amp; Statistics, Mahatma Gandhi University</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    -- Conference Convener --
+    <div class="mb-5" data-aos="fade-up" data-aos-delay="150">
+      <h2 class="fw-bold text-center text-primary mb-3">Conference Convener</h2>
+      <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card committee-card shadow h-100 text-center">
+            <div class="p-3 bg-light"><img src="Picture/all pic/Dr. Yuvaraj V.jpg" class="rounded-circle img-fluid"
+                style="width: 120px; height: 120px; object-fit: cover;" alt="Conference Convener" loading="lazy"></div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">Dr. Yuvaraj V</h5>
+              <p class="card-text text-secondary mb-1">Department of Statistics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    -- Advisory Committee Members --
+<section class="py-5 bg-light" data-aos="fade-up" data-aos-delay="200">
+  <div class="container">
+    <h2 class="fw-bold text-center text-primary mb-3">Advisory Committee Members</h2>
+    <div class="divider mx-auto mb-5" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
+
+    <div class="row g-4">
+      -- Member 1 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/pg_sankaran.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Prof. P G Sankaran" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Prof. P G Sankaran</h6>
+          <p class="text-muted small mb-0">Pro-Vice Chancellor,<br>Cochin University of Science and Technology</p>
+        </div>
+      </div>
+
+    -- Member 2 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/rajendra_ray.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Prof. Rajendra K. Ray" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Prof. Rajendra K. Ray</h6>
+          <p class="text-muted small mb-0">Professor & Chairperson, SMSS,<br>IIT Mandi, Himachal Pradesh</p>
+        </div>
+      </div>
+
+      -- Member 3 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/vijayalakshmi.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. C. Vijayalakshmi" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. C. Vijayalakshmi</h6>
+          <p class="text-muted small mb-0">Professor & Head,<br>Central University of Tamil Nadu</p>
+        </div>
+      </div>
+
+      -- Member 4 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/muthukrishnan.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. R. Muthukrishnan" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. R. Muthukrishnan</h6>
+          <p class="text-muted small mb-0">Professor & Head,<br>Bharathiar University, Tamil Nadu</p>
+        </div>
+      </div>
+
+      -- Member 5 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/navin_chandra.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. Navin Chandra" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. Navin Chandra</h6>
+          <p class="text-muted small mb-0">Professor & Head,<br>Ramanujan School of Mathematical Sciences, Pondicherry University</p>
+        </div>
+      </div>
+
+      -- Member 6 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/arumugam.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. P. Arumugam" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. P. Arumugam</h6>
+          <p class="text-muted small mb-0">Professor,<br>Manonmaniam Sundaranar University</p>
+        </div>
+      </div>
+
+      -- Member 7 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/rita.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. S. Rita" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. S. Rita</h6>
+          <p class="text-muted small mb-0">Professor & Head,<br>Periyar University</p>
+        </div>
+      </div>
+
+      -- Member 8 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/shanthi_dhandapani.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. Shanthi Dhandapani" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. Shanthi Dhandapani</h6>
+          <p class="text-muted small mb-0">Programme Director, PGDME,<br>IMU University, Kuala Lumpur, Malaysia</p>
+        </div>
+      </div>
+
+      -- Member 9 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/ishapathik_das.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. Ishapathik Das" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. Ishapathik Das</h6>
+          <p class="text-muted small mb-0">Associate Professor & Head,<br>IIT Tirupati, Andhra Pradesh</p>
+        </div>
+      </div>
+
+      -- Member 10 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/rituparna_sen.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. Rituparna Sen" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. Rituparna Sen</h6>
+          <p class="text-muted small mb-0">Associate Professor,<br>Indian Statistical Institute, Bengaluru, Karnataka</p>
+        </div>
+      </div>
+
+      -- Member 11 --
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img src="images/boby_john.jpg" class="rounded-circle mx-auto mb-3 img-fluid" alt="Dr. Boby John" style="width:120px; height:120px; object-fit:cover;">
+          <h6 class="fw-bold text-dark mb-1">Dr. Boby John</h6>
+          <p class="text-muted small mb-0">Faculty, SQC & OR Unit,<br>Indian Statistical Institute, Bangalore</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer class="bg-dark text-white py-5">
+  </div>
+</section>
+
+
+<footer id="contact" class="bg-dark text-white py-5">
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
                 <div class="text-center text-md-start mb-4">
-                    <img src="images/clogo 2 white.png" alt="Logo" class="img-fluid mb-4" style="max-height: 80px;" loading="lazy">
-                    <p class="mb-2">Kristu Jayanti College (Autonomous)</p>
-                    <p class="mb-2">K. Narayanapura, Kothanur (PO)</p>
-                    <p>Bengaluru 560077</p>
+                    <img src="Picture/Logo/KJU logo.png" alt="Kristu Jayanti Logo" class="img-fluid mb-3" style="max-height: 70px;" loading="lazy">
+                    <p class="fw-bold mb-1">Kristu Jayanti (Deemed to be University)</p>
+                    <address class="small mb-0 text-white-50">
+                        K. Narayanapura, Kothanur P.O.,<br>
+                        Bengaluru-560 077, Karnataka, India.
+                    </address>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6">
                 <div class="mb-4">
-                    <h5 class="mb-4 fw-bold">Contact Us</h5>
-                    <div class="d-flex mb-3">
-                        <i class="fas fa-phone-alt me-3 mt-1"></i>
+                    <h5 class="mb-4 fw-bold border-bottom pb-2">Conference Queries</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope me-3 text-primary fs-5"></i>
                         <div>
-                            <p class="mb-0">+91 9731778310</p>
-                            <p class="mb-0">+91 8971002351</p>
+                            <p class="mb-0 small">Convener: **Dr. Yuvaraj V**</p>
+                            <a href="mailto:yuvarajv.mca@kristujayanti.com" class="text-white-50 small">yuvarajv.mca@kristujayanti.com</a>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <i class="fas fa-envelope me-3 mt-1"></i>
-                        <p class="mb-0">ncci@kristujayanti.com</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope-open-text me-3 text-primary fs-5"></i>
+                        <div>
+                            <p class="mb-0 small">Paper Submission:</p>
+                            <a href="mailto:statsconference@kristujayanti.com" class="text-white-50 small">statsconference@kristujayanti.com</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-phone me-3 text-primary fs-5"></i>
+                        <div>
+                            <p class="mb-0 small">Contact Numbers:</p>
+                            <a href="tel:+919740523091" class="text-white-50 small">+91 97405 23091</a>,
+                            <a href="tel:+919446860007" class="text-white-50 small">+91 94468 60007</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4">
-                <div class="mb-4">
-                    <h5 class="mb-4 fw-bold">Connect With Us</h5>
-                    <div class="d-flex justify-content-start gap-3 social-icons">
-                        <a href="https://www.facebook.com/KristuJayantiCollege/" target="_blank" class="text-white social-icon">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-facebook-f"></i></div>
-                        </a>
-                        <a href="https://twitter.com/KJCAutonomous/" target="_blank" class="text-white social-icon">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-twitter"></i></div>
-                        </a>
-                        <a href="https://www.linkedin.com/company/icci25" target="_blank" class="text-white social-icon">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-linkedin-in"></i></div>
-                        </a>
-                        <a href="https://www.instagram.com/icci25.kjc/" target="_blank" class="text-white social-icon">
-                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-instagram"></i></div>
-                        </a>
-                    </div>
+                <h5 class="mb-4 fw-bold border-bottom pb-2">Quick Links</h5>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Home</a></li>
+                    <li class="mb-2"><a href="cpf.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>CPF</a></li>
+                    <li class="mb-2"><a href="submission.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Paper Submission</a></li>
+                    <li class="mb-2"><a href="registration.html" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>Registration Details</a></li>
+                    <li class="mb-2"><a href="https://www.kristujayanti.edu.in/" target="_blank" class="text-white-50 text-decoration-none"><i class="fas fa-arrow-alt-circle-right me-2"></i>KJU Official Website</a></li>
+                </ul>
+                <h5 class="mb-4 fw-bold mt-4">Connect With Us</h5>
+                <div class="d-flex justify-content-start gap-3 social-icons">
+                    <a href="https://www.facebook.com/KristuJayantiCollege/" target="_blank" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-facebook-f"></i></div>
+                    </a>
+                    <a href="https://twitter.com/KJCAutonomous/" target="_blank" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-twitter"></i></div>
+                    </a>
+                    <a href="https://www.linkedin.com/company/icasda26" target="_blank" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-linkedin-in"></i></div>
+                    </a>
+                    <a href="https://www.instagram.com/icasda26.kjc/" target="_blank" class="text-white social-icon">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="fab fa-instagram"></i></div>
+                    </a>
                 </div>
             </div>
         </div>
-        <hr class="my-4">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="nav justify-content-center flex-wrap mb-3">
-                    <li class="nav-item"><a href="index.html" class="nav-link text-white px-3">Home</a></li>
-                    <li class="nav-item"><a href="about_us.html" class="nav-link text-white px-3">About Us</a></li>
-                    <li class="nav-item"><a href="registration.html" class="nav-link text-white px-3">Registration</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link text-white px-3">Gallery</a></li>
-                    <li class="nav-item"><a href="committees.html" class="nav-link text-white px-3">Committees</a></li>
-                </ul>
-                <p class="text-center mb-0">© 2025 ICASDA. All Rights Reserved.</p>
+
+        <div class="row pt-4 mt-4 border-top border-secondary">
+            <div class="col-12 text-center small text-white-50">
+                © 2025 ICASDA 2026. All Rights Reserved. Designed and Maintained by the Department of Statistics, KJU.
             </div>
         </div>
     </div>
@@ -482,5 +712,67 @@
 <script>
     AOS.init();
 </script>
+
+-- Back to Top Button --
+<button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+    // Back to Top Button Functionality
+    const backToTopButton = document.getElementById('back-to-top');
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    // Smooth scroll to top on click
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Dynamic Active Page Highlighting
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const desktopLink = document.querySelector(`.desktop-nav a[href="${currentPage}"]`);
+        const offcanvasLink = document.querySelector(`.offcanvas-body a[href="${currentPage}"]`);
+        if (desktopLink) {
+            desktopLink.classList.add('active');
+            desktopLink.setAttribute('aria-current', 'page');
+        }
+        if (offcanvasLink) {
+            offcanvasLink.classList.add('active');
+            offcanvasLink.setAttribute('aria-current', 'page');
+        }
+    });
+</script>
+</body>
+</html>
+
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="2;url=index.html">
+  <title>Coming Soon</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 20%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Will be available soon 🚧</h1>
+  <p>Redirecting to the home page...</p>
 </body>
 </html>
